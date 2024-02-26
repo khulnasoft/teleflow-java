@@ -1,8 +1,8 @@
 package com.teleflow.common.rest;
 
-public class NovuNetworkException extends Exception {
+public class TeleflowNetworkException extends Exception {
 
-    public NovuNetworkException(String message) {
+    public TeleflowNetworkException(String message) {
         super(message);
     }
 }
