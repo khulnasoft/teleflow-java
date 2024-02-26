@@ -1,7 +1,7 @@
-package co.novu.api.blueprints;
+package com.teleflow.api.blueprints;
 
-import co.novu.api.blueprints.pojos.Blueprint;
-import co.novu.api.blueprints.responses.BlueprintsByCategoryResponse;
+import com.teleflow.api.blueprints.pojos.Blueprint;
+import com.teleflow.api.blueprints.responses.BlueprintsByCategoryResponse;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;

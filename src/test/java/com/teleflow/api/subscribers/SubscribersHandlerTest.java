@@ -1,33 +1,33 @@
-package co.novu.api.subscribers;
+package com.teleflow.api.subscribers;
 
-import co.novu.api.common.SubscriberRequest;
-import co.novu.api.subscribers.pojos.Mark;
-import co.novu.api.subscribers.pojos.Preference;
-import co.novu.api.subscribers.pojos.SubscriberNotification;
-import co.novu.api.subscribers.pojos.SubscriberPreference;
-import co.novu.api.subscribers.requests.BulkSubscriberRequest;
-import co.novu.api.subscribers.requests.MarkAllMessagesRequest;
-import co.novu.api.subscribers.requests.MarkMessageActionAsSeenRequest;
-import co.novu.api.subscribers.requests.MarkSubscriberFeedAsRequest;
-import co.novu.api.subscribers.requests.UpdateSubscriberCredentialsRequest;
-import co.novu.api.subscribers.requests.UpdateSubscriberOnlineStatusRequest;
-import co.novu.api.subscribers.requests.UpdateSubscriberPreferenceRequest;
-import co.novu.api.subscribers.requests.UpdateSubscriberRequest;
-import co.novu.api.subscribers.responses.BulkSubscriberResponse;
-import co.novu.api.subscribers.responses.CreateBulkSubscriberResponse;
-import co.novu.api.subscribers.responses.CreateSubscriberResponse;
-import co.novu.api.subscribers.responses.DeleteCredentialsResponse;
-import co.novu.api.subscribers.responses.DeleteResponse;
-import co.novu.api.subscribers.responses.SingleSubscriberPrefResponse;
-import co.novu.api.subscribers.responses.SingleSubscriberResponse;
-import co.novu.api.subscribers.responses.SubscriberDeleteResponse;
-import co.novu.api.subscribers.responses.SubscriberNotificationResponse;
-import co.novu.api.subscribers.responses.SubscriberPreferenceResponse;
-import co.novu.api.subscribers.responses.SubscriberResponse;
-import co.novu.api.subscribers.responses.UnseenNotificationsCountResponse;
-import co.novu.common.base.NovuConfig;
-import co.novu.common.rest.NovuNetworkException;
-import co.novu.common.rest.RestHandler;
+import com.teleflow.api.common.SubscriberRequest;
+import com.teleflow.api.subscribers.pojos.Mark;
+import com.teleflow.api.subscribers.pojos.Preference;
+import com.teleflow.api.subscribers.pojos.SubscriberNotification;
+import com.teleflow.api.subscribers.pojos.SubscriberPreference;
+import com.teleflow.api.subscribers.requests.BulkSubscriberRequest;
+import com.teleflow.api.subscribers.requests.MarkAllMessagesRequest;
+import com.teleflow.api.subscribers.requests.MarkMessageActionAsSeenRequest;
+import com.teleflow.api.subscribers.requests.MarkSubscriberFeedAsRequest;
+import com.teleflow.api.subscribers.requests.UpdateSubscriberCredentialsRequest;
+import com.teleflow.api.subscribers.requests.UpdateSubscriberOnlineStatusRequest;
+import com.teleflow.api.subscribers.requests.UpdateSubscriberPreferenceRequest;
+import com.teleflow.api.subscribers.requests.UpdateSubscriberRequest;
+import com.teleflow.api.subscribers.responses.BulkSubscriberResponse;
+import com.teleflow.api.subscribers.responses.CreateBulkSubscriberResponse;
+import com.teleflow.api.subscribers.responses.CreateSubscriberResponse;
+import com.teleflow.api.subscribers.responses.DeleteCredentialsResponse;
+import com.teleflow.api.subscribers.responses.DeleteResponse;
+import com.teleflow.api.subscribers.responses.SingleSubscriberPrefResponse;
+import com.teleflow.api.subscribers.responses.SingleSubscriberResponse;
+import com.teleflow.api.subscribers.responses.SubscriberDeleteResponse;
+import com.teleflow.api.subscribers.responses.SubscriberNotificationResponse;
+import com.teleflow.api.subscribers.responses.SubscriberPreferenceResponse;
+import com.teleflow.api.subscribers.responses.SubscriberResponse;
+import com.teleflow.api.subscribers.responses.UnseenNotificationsCountResponse;
+import com.teleflow.common.base.TeleflowConfig;
+import com.teleflow.common.rest.TeleflowNetworkException;
+import com.teleflow.common.rest.RestHandler;
 import com.google.gson.Gson;
 import junit.framework.TestCase;
 import okhttp3.mockwebserver.MockResponse;
@@ -50,13 +50,13 @@ public class SubscribersHandlerTest extends TestCase {
     @Override
     protected void setUp() {
         mockWebServer = new MockWebServer();
-        NovuConfig novuConfig = new NovuConfig("1234");
-        novuConfig.setBaseUrl(mockWebServer.url("").toString());
-        RestHandler restHandler = new RestHandler(novuConfig);
+        TeleflowConfig teleflowConfig = new TeleflowConfig("1234");
+        teleflowConfig.setBaseUrl(mockWebServer.url("").toString());
+        RestHandler restHandler = new RestHandler(teleflowConfig);
         subscribersHandler = new SubscribersHandler(restHandler);
     }
 
-    public void test_getSubscribersWithValidParams() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_getSubscribersWithValidParams() throws IOException, TeleflowNetworkException, InterruptedException {
         BulkSubscriberResponse bulkSubscriberResponse = new BulkSubscriberResponse();
         bulkSubscriberResponse.setPage(1L);
         bulkSubscriberResponse.setPageSize(10L);
@@ -72,7 +72,7 @@ public class SubscribersHandlerTest extends TestCase {
         assertEquals(bulkSubscriberResponse, response);
     }
 
-    public void test_getSubscribersWithNullParams() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_getSubscribersWithNullParams() throws IOException, TeleflowNetworkException, InterruptedException {
         mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(gson.toJson(new SubscriberResponse())));
         subscribersHandler.getSubscribers(null, null);
         RecordedRequest request = mockWebServer.takeRequest();
@@ -80,7 +80,7 @@ public class SubscribersHandlerTest extends TestCase {
         assertEquals("GET", request.getMethod());
     }
 
-    public void test_createSubscriber() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_createSubscriber() throws IOException, TeleflowNetworkException, InterruptedException {
         SubscriberRequest subscriberRequest = new SubscriberRequest();
         subscriberRequest.setFirstName("fName");
         subscriberRequest.setLastName("lName");
@@ -103,7 +103,7 @@ public class SubscribersHandlerTest extends TestCase {
         assertEquals(createSubscriberResponse, response);
     }
 
-    public void test_createSubscriberBulk() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_createSubscriberBulk() throws IOException, TeleflowNetworkException, InterruptedException {
         SubscriberRequest subscriberRequest = new SubscriberRequest();
         subscriberRequest.setFirstName("fName");
         subscriberRequest.setLastName("lName");
@@ -126,7 +126,7 @@ public class SubscribersHandlerTest extends TestCase {
         assertFalse(response.getCreated().isEmpty());
     }
 
-    public void test_getSubscriber() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_getSubscriber() throws IOException, TeleflowNetworkException, InterruptedException {
         SingleSubscriberResponse singleSubscriberResponse = new SingleSubscriberResponse();
         SubscriberResponse subscriberResponse = new SubscriberResponse();
         subscriberResponse.setSubscriberId("12345");
@@ -145,7 +145,7 @@ public class SubscribersHandlerTest extends TestCase {
         assertEquals(singleSubscriberResponse, response);
     }
 
-    public void test_updateSubscriber() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_updateSubscriber() throws IOException, TeleflowNetworkException, InterruptedException {
         UpdateSubscriberRequest request = new UpdateSubscriberRequest();
         request.setFirstName("name");
         request.setLastName("lName");
@@ -168,7 +168,7 @@ public class SubscribersHandlerTest extends TestCase {
         assertEquals(singleSubscriberResponse, response);
     }
 
-    public void test_deleteSubscriber() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_deleteSubscriber() throws IOException, TeleflowNetworkException, InterruptedException {
         SubscriberDeleteResponse subscriberDeleteResponse = new SubscriberDeleteResponse();
         DeleteResponse deleteResponse = new DeleteResponse();
         deleteResponse.setAcknowledged(true);
@@ -186,7 +186,7 @@ public class SubscribersHandlerTest extends TestCase {
         assertEquals(subscriberDeleteResponse, response);
     }
 
-    public void test_updateSubscriberCredentials() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_updateSubscriberCredentials() throws IOException, TeleflowNetworkException, InterruptedException {
         UpdateSubscriberCredentialsRequest request = new UpdateSubscriberCredentialsRequest();
         request.setProviderId("pId");
 
@@ -208,10 +208,10 @@ public class SubscribersHandlerTest extends TestCase {
         assertEquals(singleSubscriberResponse, response);
     }
 
-    public void test_deleteSubscriberCredentialsFailure() throws IOException, InterruptedException, NovuNetworkException {
+    public void test_deleteSubscriberCredentialsFailure() throws IOException, InterruptedException, TeleflowNetworkException {
         mockWebServer.enqueue(new MockResponse().setResponseCode(400).setBody("{}"));
 
-        assertThrows(NovuNetworkException.class,
+        assertThrows(TeleflowNetworkException.class,
             () -> subscribersHandler.deleteSubscriberCredentials("sId", "pId"));
         
         RecordedRequest request = mockWebServer.takeRequest();
@@ -219,7 +219,7 @@ public class SubscribersHandlerTest extends TestCase {
         assertEquals("DELETE", request.getMethod());
     }
 
-    public void test_deleteSubscriberCredentialsSuccess() throws IOException, InterruptedException, NovuNetworkException {
+    public void test_deleteSubscriberCredentialsSuccess() throws IOException, InterruptedException, TeleflowNetworkException {
         mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody("{}"));
 
         DeleteCredentialsResponse response = subscribersHandler.deleteSubscriberCredentials("sId", "pId");
@@ -230,7 +230,7 @@ public class SubscribersHandlerTest extends TestCase {
         assertTrue(response.getAcknowledged());
     }
 
-    public void test_updateSubscriberOnlineStatus() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_updateSubscriberOnlineStatus() throws IOException, TeleflowNetworkException, InterruptedException {
         UpdateSubscriberOnlineStatusRequest request = new UpdateSubscriberOnlineStatusRequest();
         request.setIsOnline(true);
 
@@ -252,7 +252,7 @@ public class SubscribersHandlerTest extends TestCase {
         assertEquals(singleSubscriberResponse, response);
     }
 
-    public void test_getSubscriberPreferences() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_getSubscriberPreferences() throws IOException, TeleflowNetworkException, InterruptedException {
         SubscriberPreferenceResponse preferenceResponse = new SubscriberPreferenceResponse();
         SubscriberPreference subscriberPreference = new SubscriberPreference();
         Preference preference = new Preference();
@@ -270,7 +270,7 @@ public class SubscribersHandlerTest extends TestCase {
         assertEquals(preferenceResponse, response);
     }
 
-    public void test_updateSubscriberPreferences() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_updateSubscriberPreferences() throws IOException, TeleflowNetworkException, InterruptedException {
         UpdateSubscriberPreferenceRequest request = new UpdateSubscriberPreferenceRequest();
         request.setEnabled(false);
 
@@ -291,7 +291,7 @@ public class SubscribersHandlerTest extends TestCase {
         assertEquals(preferenceResponse, response);
     }
 
-    public void test_getSubscriberNotificationsFeed() throws InterruptedException, IOException, NovuNetworkException {
+    public void test_getSubscriberNotificationsFeed() throws InterruptedException, IOException, TeleflowNetworkException {
         SubscriberNotificationResponse notificationResponse = new SubscriberNotificationResponse();
         notificationResponse.setPage(1L);
         notificationResponse.setPageSize(10L);
@@ -311,7 +311,7 @@ public class SubscribersHandlerTest extends TestCase {
         assertEquals(notificationResponse, response);
     }
 
-    public void test_getSubscriberUnseenNotificationsCount() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_getSubscriberUnseenNotificationsCount() throws IOException, TeleflowNetworkException, InterruptedException {
         UnseenNotificationsCountResponse notificationsCountResponse = new UnseenNotificationsCountResponse();
         notificationsCountResponse.setData(20L);
 
@@ -325,7 +325,7 @@ public class SubscribersHandlerTest extends TestCase {
         assertEquals(notificationsCountResponse, response);
     }
 
-    public void test_markSubscriberMessageFeedAs() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_markSubscriberMessageFeedAs() throws IOException, TeleflowNetworkException, InterruptedException {
         MarkSubscriberFeedAsRequest request = new MarkSubscriberFeedAsRequest();
         Mark mark = new Mark();
         mark.setRead(true);
@@ -351,7 +351,7 @@ public class SubscribersHandlerTest extends TestCase {
         assertEquals(notificationResponse, response);
     }
 
-    public void test_markAllSubscriberMessagesFeedAs() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_markAllSubscriberMessagesFeedAs() throws IOException, TeleflowNetworkException, InterruptedException {
         MarkAllMessagesRequest request = new MarkAllMessagesRequest();
         request.setFeedIdentifier("fId");
         request.setMarkAs("read");
@@ -366,7 +366,7 @@ public class SubscribersHandlerTest extends TestCase {
         assertEquals((Long) 20L, response);
     }
 
-    public void test_markMessageActionAsSeen() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_markMessageActionAsSeen() throws IOException, TeleflowNetworkException, InterruptedException {
         MarkMessageActionAsSeenRequest request = new MarkMessageActionAsSeenRequest();
         request.setStatus("read");
 

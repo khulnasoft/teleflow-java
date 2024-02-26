@@ -1,8 +1,8 @@
-package co.novu.api.executivedetails;
+package com.teleflow.api.executivedetails;
 
 import java.util.Map;
 
-import co.novu.api.executivedetails.responses.ExecutiveDetailsResponse;
+import com.teleflow.api.executivedetails.responses.ExecutiveDetailsResponse;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.QueryMap;

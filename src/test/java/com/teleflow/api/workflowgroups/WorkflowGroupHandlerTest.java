@@ -1,18 +1,18 @@
-package co.novu.api.workflowgroups;
+package com.teleflow.api.workflowgroups;
 
 import java.io.IOException;
 import java.util.Collections;
 
 import com.google.gson.Gson;
 
-import co.novu.api.workflowgroups.request.WorkflowGroupRequest;
-import co.novu.api.workflowgroups.responses.DeleteWorkflowGroup;
-import co.novu.api.workflowgroups.responses.GetWorkflowGroupsResponse;
-import co.novu.api.workflowgroups.responses.WorkflowGroupResponse;
-import co.novu.api.workflowgroups.responses.WorkflowGroupResponseData;
-import co.novu.common.base.NovuConfig;
-import co.novu.common.rest.NovuNetworkException;
-import co.novu.common.rest.RestHandler;
+import com.teleflow.api.workflowgroups.request.WorkflowGroupRequest;
+import com.teleflow.api.workflowgroups.responses.DeleteWorkflowGroup;
+import com.teleflow.api.workflowgroups.responses.GetWorkflowGroupsResponse;
+import com.teleflow.api.workflowgroups.responses.WorkflowGroupResponse;
+import com.teleflow.api.workflowgroups.responses.WorkflowGroupResponseData;
+import com.teleflow.common.base.TeleflowConfig;
+import com.teleflow.common.rest.TeleflowNetworkException;
+import com.teleflow.common.rest.RestHandler;
 import junit.framework.TestCase;
 import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;
@@ -26,13 +26,13 @@ public class WorkflowGroupHandlerTest extends TestCase {
     @Override
     protected void setUp() {
         mockWebServer = new MockWebServer();
-        NovuConfig novuConfig = new NovuConfig("1234");
-        novuConfig.setBaseUrl(mockWebServer.url("").toString());
-        RestHandler restHandler = new RestHandler(novuConfig);
+        TeleflowConfig teleflowConfig = new TeleflowConfig("1234");
+        teleflowConfig.setBaseUrl(mockWebServer.url("").toString());
+        RestHandler restHandler = new RestHandler(teleflowConfig);
         workflowGroupHandler = new WorkflowGroupHandler(restHandler);
     }
 
-    public void test_createWorkflowGroup() throws InterruptedException, NovuNetworkException, IOException {
+    public void test_createWorkflowGroup() throws InterruptedException, TeleflowNetworkException, IOException {
         WorkflowGroupRequest workflowGroupRequest = new WorkflowGroupRequest();
         workflowGroupRequest.setName("fname");
 
@@ -56,7 +56,7 @@ public class WorkflowGroupHandlerTest extends TestCase {
         assertEquals(gson.toJson(workflowGroupResponse), gson.toJson(response));
     }
 
-    public void test_getWorkflowGroups() throws InterruptedException, NovuNetworkException, IOException {
+    public void test_getWorkflowGroups() throws InterruptedException, TeleflowNetworkException, IOException {
         GetWorkflowGroupsResponse getWorkflowGroupsResponse = new GetWorkflowGroupsResponse();
         getWorkflowGroupsResponse.setData(Collections.singletonList(new WorkflowGroupResponseData()));
         
@@ -71,7 +71,7 @@ public class WorkflowGroupHandlerTest extends TestCase {
         assertEquals(gson.toJson(getWorkflowGroupsResponse), gson.toJson(response));
     }
 
-    public void test_getWorkflowGroup() throws NovuNetworkException, IOException, InterruptedException {
+    public void test_getWorkflowGroup() throws TeleflowNetworkException, IOException, InterruptedException {
 
         WorkflowGroupResponse workflowGroupResponse = new WorkflowGroupResponse();
         WorkflowGroupResponseData data = new WorkflowGroupResponseData();
@@ -93,7 +93,7 @@ public class WorkflowGroupHandlerTest extends TestCase {
         assertEquals(gson.toJson(workflowGroupResponse), gson.toJson(response));
     }
 
-    public void test_updateWorkflowGroup() throws NovuNetworkException, IOException, InterruptedException {
+    public void test_updateWorkflowGroup() throws TeleflowNetworkException, IOException, InterruptedException {
 
         WorkflowGroupRequest workflowGroupRequest = new WorkflowGroupRequest();
         workflowGroupRequest.setName("fname");
@@ -118,7 +118,7 @@ public class WorkflowGroupHandlerTest extends TestCase {
         assertEquals(gson.toJson(workflowGroupResponse), gson.toJson(response));
     }
 
-    public void test_deleteWorkflowGroup() throws NovuNetworkException, IOException, InterruptedException {
+    public void test_deleteWorkflowGroup() throws TeleflowNetworkException, IOException, InterruptedException {
         DeleteWorkflowGroup deleteWorkflowGroup = new DeleteWorkflowGroup();
         deleteWorkflowGroup.setAcknowledged(false);
         deleteWorkflowGroup.setStatus("success");

@@ -1,4 +1,4 @@
-package co.novu.api.integrations.pojo;
+package com.teleflow.api.integrations.pojo;
 
 import com.google.gson.annotations.SerializedName;
 

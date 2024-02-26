@@ -1,17 +1,17 @@
-package co.novu.api.topics;
+package com.teleflow.api.topics;
 
-import co.novu.api.topics.requests.FilterTopicsRequest;
-import co.novu.api.topics.requests.RenameTopicRequest;
-import co.novu.api.topics.requests.SubscriberAdditionRequest;
-import co.novu.api.topics.requests.TopicRequest;
-import co.novu.api.topics.responses.CheckTopicSubscriberResponse;
-import co.novu.api.topics.responses.DeleteTopicResponse;
-import co.novu.api.topics.responses.FilterTopicsResponse;
-import co.novu.api.topics.responses.SubscriberAdditionResponse;
-import co.novu.api.topics.responses.SubscriberRemovalResponse;
-import co.novu.api.topics.responses.TopicResponse;
-import co.novu.common.rest.NovuNetworkException;
-import co.novu.common.rest.RestHandler;
+import com.teleflow.api.topics.requests.FilterTopicsRequest;
+import com.teleflow.api.topics.requests.RenameTopicRequest;
+import com.teleflow.api.topics.requests.SubscriberAdditionRequest;
+import com.teleflow.api.topics.requests.TopicRequest;
+import com.teleflow.api.topics.responses.CheckTopicSubscriberResponse;
+import com.teleflow.api.topics.responses.DeleteTopicResponse;
+import com.teleflow.api.topics.responses.FilterTopicsResponse;
+import com.teleflow.api.topics.responses.SubscriberAdditionResponse;
+import com.teleflow.api.topics.responses.SubscriberRemovalResponse;
+import com.teleflow.api.topics.responses.TopicResponse;
+import com.teleflow.common.rest.TeleflowNetworkException;
+import com.teleflow.common.rest.RestHandler;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -28,12 +28,12 @@ public class TopicHandler {
         this.topicApi = restHandler.buildRetrofit().create(TopicApi.class);
     }
 
-    public TopicResponse createTopic(TopicRequest request) throws IOException, NovuNetworkException {
+    public TopicResponse createTopic(TopicRequest request) throws IOException, TeleflowNetworkException {
         Response<TopicResponse> response = topicApi.createTopic(request).execute();
         return restHandler.extractResponse(response);
     }
 
-    public FilterTopicsResponse filterTopics(FilterTopicsRequest request) throws IOException, NovuNetworkException {
+    public FilterTopicsResponse filterTopics(FilterTopicsRequest request) throws IOException, TeleflowNetworkException {
         Map<String, Object> params = new HashMap<>();
         if (request.getPage() != null) params.put("page", request.getPage());
         if (request.getPageSize() != null) params.put("pageSize", request.getPageSize());
@@ -42,32 +42,32 @@ public class TopicHandler {
         return restHandler.extractResponse(response);
     }
 
-    public SubscriberAdditionResponse addSubscriberToTopic(SubscriberAdditionRequest request, String topicKey) throws IOException, NovuNetworkException {
+    public SubscriberAdditionResponse addSubscriberToTopic(SubscriberAdditionRequest request, String topicKey) throws IOException, TeleflowNetworkException {
         Response<SubscriberAdditionResponse> response = topicApi.addSubscriberToTopic(topicKey, request).execute();
         return restHandler.extractResponse(response);
     }
 
-    public CheckTopicSubscriberResponse checkTopicSubscriber(String topicKey, String externalSubscriberId) throws IOException, NovuNetworkException {
+    public CheckTopicSubscriberResponse checkTopicSubscriber(String topicKey, String externalSubscriberId) throws IOException, TeleflowNetworkException {
         Response<CheckTopicSubscriberResponse> response = topicApi.checkTopicSubscriber(topicKey, externalSubscriberId).execute();
         return restHandler.extractResponse(response);
     }
 
-    public SubscriberRemovalResponse removeSubscriberFromTopic(SubscriberAdditionRequest request, String topicKey) throws IOException, NovuNetworkException {
+    public SubscriberRemovalResponse removeSubscriberFromTopic(SubscriberAdditionRequest request, String topicKey) throws IOException, TeleflowNetworkException {
         Response<Void> response = topicApi.removeSubscriberFromTopic(topicKey, request).execute();
         return restHandler.extractResponse(response, new SubscriberRemovalResponse());
     }
 
-    public DeleteTopicResponse deleteTopic(String topicKey) throws IOException, NovuNetworkException {
+    public DeleteTopicResponse deleteTopic(String topicKey) throws IOException, TeleflowNetworkException {
         Response<Void> response = topicApi.deleteTopic(topicKey).execute();
         return restHandler.extractResponse(response, new DeleteTopicResponse());
     }
 
-    public TopicResponse getTopic(String topicKey) throws IOException, NovuNetworkException {
+    public TopicResponse getTopic(String topicKey) throws IOException, TeleflowNetworkException {
         Response<TopicResponse> response = topicApi.getTopic(topicKey).execute();
         return restHandler.extractResponse(response);
     }
 
-    public TopicResponse renameTopic(RenameTopicRequest request, String topicKey) throws IOException, NovuNetworkException {
+    public TopicResponse renameTopic(RenameTopicRequest request, String topicKey) throws IOException, TeleflowNetworkException {
         Response<TopicResponse> response = topicApi.renameTopic(topicKey, request).execute();
         return restHandler.extractResponse(response);
     }

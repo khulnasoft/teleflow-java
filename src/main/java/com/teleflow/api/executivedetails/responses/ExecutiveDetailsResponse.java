@@ -1,6 +1,6 @@
-package co.novu.api.executivedetails.responses;
+package com.teleflow.api.executivedetails.responses;
 
-import co.novu.api.notifications.pojos.ExecutionDetails;
+import com.teleflow.api.notifications.pojos.ExecutionDetails;
 import lombok.Data;
 
 import java.util.List;

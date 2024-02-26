@@ -1,26 +1,26 @@
-package co.novu.api.topics;
+package com.teleflow.api.topics;
 
-import co.novu.api.topics.requests.FilterTopicsRequest;
-import co.novu.api.topics.requests.RenameTopicRequest;
-import co.novu.api.topics.requests.SubscriberAdditionRequest;
-import co.novu.api.topics.requests.TopicRequest;
-import co.novu.api.topics.responses.CheckTopicSubscriberResponse;
-import co.novu.api.topics.responses.DeleteTopicResponse;
-import co.novu.api.topics.responses.Failed;
-import co.novu.api.topics.responses.FilterTopicsResponse;
-import co.novu.api.topics.responses.SubscriberAdditionResponse;
-import co.novu.api.topics.responses.SubscriberAdditionResponseData;
-import co.novu.api.topics.responses.SubscriberRemovalResponse;
-import co.novu.api.topics.responses.TopicResponse;
-import co.novu.api.topics.responses.TopicResponseData;
-import co.novu.common.base.NovuConfig;
+import com.teleflow.api.topics.requests.FilterTopicsRequest;
+import com.teleflow.api.topics.requests.RenameTopicRequest;
+import com.teleflow.api.topics.requests.SubscriberAdditionRequest;
+import com.teleflow.api.topics.requests.TopicRequest;
+import com.teleflow.api.topics.responses.CheckTopicSubscriberResponse;
+import com.teleflow.api.topics.responses.DeleteTopicResponse;
+import com.teleflow.api.topics.responses.Failed;
+import com.teleflow.api.topics.responses.FilterTopicsResponse;
+import com.teleflow.api.topics.responses.SubscriberAdditionResponse;
+import com.teleflow.api.topics.responses.SubscriberAdditionResponseData;
+import com.teleflow.api.topics.responses.SubscriberRemovalResponse;
+import com.teleflow.api.topics.responses.TopicResponse;
+import com.teleflow.api.topics.responses.TopicResponseData;
+import com.teleflow.common.base.TeleflowConfig;
 
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
-import co.novu.common.rest.NovuNetworkException;
-import co.novu.common.rest.RestHandler;
+import com.teleflow.common.rest.TeleflowNetworkException;
+import com.teleflow.common.rest.RestHandler;
 import com.google.gson.Gson;
 import junit.framework.TestCase;
 
@@ -38,13 +38,13 @@ public class TopicsHandlerTest extends TestCase {
     @Override
     protected void setUp() {
         mockWebServer = new MockWebServer();
-        NovuConfig novuConfig = new NovuConfig("1234");
-        novuConfig.setBaseUrl(mockWebServer.url("").toString());
-        RestHandler restHandler = new RestHandler(novuConfig);
+        TeleflowConfig teleflowConfig = new TeleflowConfig("1234");
+        teleflowConfig.setBaseUrl(mockWebServer.url("").toString());
+        RestHandler restHandler = new RestHandler(teleflowConfig);
         topicHandler = new TopicHandler(restHandler);
     }
 
-    public void test_createTopic() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_createTopic() throws IOException, TeleflowNetworkException, InterruptedException {
         TopicRequest topicRequest = new TopicRequest();
         topicRequest.setKey("key");
         topicRequest.setName("name");
@@ -73,7 +73,7 @@ public class TopicsHandlerTest extends TestCase {
         assertEquals(gson.toJson(topicResponse), gson.toJson(response));
     }
 
-    public void test_filterTopics() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_filterTopics() throws IOException, TeleflowNetworkException, InterruptedException {
         FilterTopicsResponse topicsResponse = new FilterTopicsResponse();
         topicsResponse.setData(Collections.singletonList(new TopicResponseData()));
         topicsResponse.setPage(2);
@@ -94,7 +94,7 @@ public class TopicsHandlerTest extends TestCase {
         assertEquals(gson.toJson(topicsResponse), gson.toJson(response));
     }
 
-    public void test_addSubscriberToTopic() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_addSubscriberToTopic() throws IOException, TeleflowNetworkException, InterruptedException {
         SubscriberAdditionResponse additionResponse = new SubscriberAdditionResponse();
         SubscriberAdditionResponseData additionResponseData = new SubscriberAdditionResponseData();
         Failed failed = new Failed();
@@ -116,7 +116,7 @@ public class TopicsHandlerTest extends TestCase {
         assertEquals(gson.toJson(additionResponse), gson.toJson(response));
     }
 
-    public void test_checkTopicSubscriber() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_checkTopicSubscriber() throws IOException, TeleflowNetworkException, InterruptedException {
         CheckTopicSubscriberResponse responseData = new CheckTopicSubscriberResponse();
         responseData.setEnvironmentId("environmentId");
         responseData.setOrganizationId("organizationId");
@@ -142,13 +142,13 @@ public class TopicsHandlerTest extends TestCase {
         Gson gson = new Gson();
         mockWebServer.enqueue(new MockResponse().setResponseCode(400).setBody("{}"));
 
-        NovuNetworkException networkException = assertThrows(NovuNetworkException.class,
+        TeleflowNetworkException networkException = assertThrows(TeleflowNetworkException.class,
                 () -> topicHandler.removeSubscriberFromTopic(additionRequest,"topicKey"));
         RecordedRequest request = mockWebServer.takeRequest();
         assertEquals("/topics/topicKey/subscribers/removal", request.getPath());
         assertEquals("POST", request.getMethod());
     }
-    public void test_removeSubscriberFromTopicSuccess() throws IOException, InterruptedException, NovuNetworkException {
+    public void test_removeSubscriberFromTopicSuccess() throws IOException, InterruptedException, TeleflowNetworkException {
         SubscriberAdditionRequest additionRequest = new SubscriberAdditionRequest();
         additionRequest.setSubscribers(Collections.singletonList("aSubscriberId"));
 
@@ -167,14 +167,14 @@ public class TopicsHandlerTest extends TestCase {
         Gson gson = new Gson();
         mockWebServer.enqueue(new MockResponse().setResponseCode(400).setBody(gson.toJson("{}")));
 
-        NovuNetworkException networkException = assertThrows(NovuNetworkException.class,
+        TeleflowNetworkException networkException = assertThrows(TeleflowNetworkException.class,
                 () -> topicHandler.deleteTopic("topicKey"));
         RecordedRequest request = mockWebServer.takeRequest();
         assertEquals("/topics/topicKey", request.getPath());
         assertEquals("DELETE", request.getMethod());
     }
 
-    public void test_deleteTopicSuccess() throws IOException, InterruptedException, NovuNetworkException {
+    public void test_deleteTopicSuccess() throws IOException, InterruptedException, TeleflowNetworkException {
         Gson gson = new Gson();
         mockWebServer.enqueue(new MockResponse().setResponseCode(201).setBody("{}"));
 
@@ -185,7 +185,7 @@ public class TopicsHandlerTest extends TestCase {
         assertNotNull(response);
         assertTrue(response.getAcknowledged());
     }
-    public void test_getTopic() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_getTopic() throws IOException, TeleflowNetworkException, InterruptedException {
         TopicResponse topicResponse = new TopicResponse();
         TopicResponseData data = new TopicResponseData();
         data.setId("id");
@@ -211,7 +211,7 @@ public class TopicsHandlerTest extends TestCase {
         assertEquals(gson.toJson(topicResponse), gson.toJson(response));
     }
 
-    public void test_renameTopic() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_renameTopic() throws IOException, TeleflowNetworkException, InterruptedException {
         TopicResponse topicResponse = new TopicResponse();
         TopicResponseData data = new TopicResponseData();
         data.setId("id");

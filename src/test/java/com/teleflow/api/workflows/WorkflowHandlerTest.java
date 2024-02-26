@@ -1,4 +1,4 @@
-package co.novu.api.workflows;
+package com.teleflow.api.workflows;
 
 import java.io.IOException;
 import java.util.Collections;
@@ -6,19 +6,19 @@ import java.util.List;
 
 import com.google.gson.Gson;
 
-import co.novu.api.common.NotificationGroup;
-import co.novu.api.common.PreferenceSettings;
-import co.novu.api.common.Trigger;
-import co.novu.api.workflows.requests.UpdateWorkflowRequest;
-import co.novu.api.workflows.requests.UpdateWorkflowStatusRequest;
-import co.novu.api.workflows.requests.WorkflowRequest;
-import co.novu.api.workflows.responses.BulkWorkflowResponse;
-import co.novu.api.workflows.responses.DeleteWorkflowResponse;
-import co.novu.api.workflows.responses.SingleWorkflowResponse;
-import co.novu.api.workflows.responses.WorkflowResponse;
-import co.novu.common.base.NovuConfig;
-import co.novu.common.rest.NovuNetworkException;
-import co.novu.common.rest.RestHandler;
+import com.teleflow.api.common.NotificationGroup;
+import com.teleflow.api.common.PreferenceSettings;
+import com.teleflow.api.common.Trigger;
+import com.teleflow.api.workflows.requests.UpdateWorkflowRequest;
+import com.teleflow.api.workflows.requests.UpdateWorkflowStatusRequest;
+import com.teleflow.api.workflows.requests.WorkflowRequest;
+import com.teleflow.api.workflows.responses.BulkWorkflowResponse;
+import com.teleflow.api.workflows.responses.DeleteWorkflowResponse;
+import com.teleflow.api.workflows.responses.SingleWorkflowResponse;
+import com.teleflow.api.workflows.responses.WorkflowResponse;
+import com.teleflow.common.base.TeleflowConfig;
+import com.teleflow.common.rest.TeleflowNetworkException;
+import com.teleflow.common.rest.RestHandler;
 import junit.framework.TestCase;
 import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;
@@ -32,13 +32,13 @@ public class WorkflowHandlerTest extends TestCase {
     @Override
     protected void setUp() {
     	mockWebServer = new MockWebServer();
-        NovuConfig novuConfig = new NovuConfig("1234");
-        novuConfig.setBaseUrl(mockWebServer.url("").toString());
-        RestHandler restHandler = new RestHandler(novuConfig);
+        TeleflowConfig teleflowConfig = new TeleflowConfig("1234");
+        teleflowConfig.setBaseUrl(mockWebServer.url("").toString());
+        RestHandler restHandler = new RestHandler(teleflowConfig);
         workflowHandler = new WorkflowHandler(restHandler);
     }
 
-    public void test_getWorkflows() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_getWorkflows() throws IOException, TeleflowNetworkException, InterruptedException {
         BulkWorkflowResponse workflowResponse = new BulkWorkflowResponse();
         workflowResponse.setPage(2L);
         workflowResponse.setPageSize(20L);
@@ -58,7 +58,7 @@ public class WorkflowHandlerTest extends TestCase {
     }
 
 
-    public void test_createWorkflow() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_createWorkflow() throws IOException, TeleflowNetworkException, InterruptedException {
         WorkflowRequest workflowRequest = new WorkflowRequest();
         workflowRequest.setDescription("Desc");
         workflowRequest.setActive(false);
@@ -131,7 +131,7 @@ public class WorkflowHandlerTest extends TestCase {
         assertEquals(singleWorkflowResponse, response);
     }
 
-    public void test_updateWorkflow() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_updateWorkflow() throws IOException, TeleflowNetworkException, InterruptedException {
         UpdateWorkflowRequest workflowRequest = new UpdateWorkflowRequest();
         workflowRequest.setDescription("Desc");
         workflowRequest.setActive(false);
@@ -202,7 +202,7 @@ public class WorkflowHandlerTest extends TestCase {
         assertEquals(singleWorkflowResponse, response);
     }
 
-    public void test_deleteWorkflow() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_deleteWorkflow() throws IOException, TeleflowNetworkException, InterruptedException {
         DeleteWorkflowResponse deleteWorkflowResponse = new DeleteWorkflowResponse();
         deleteWorkflowResponse.setData(false);
 
@@ -218,7 +218,7 @@ public class WorkflowHandlerTest extends TestCase {
         assertEquals(deleteWorkflowResponse, response);
     }
 
-    public void test_getWorkflow() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_getWorkflow() throws IOException, TeleflowNetworkException, InterruptedException {
         SingleWorkflowResponse singleWorkflowResponse = new SingleWorkflowResponse();
         WorkflowResponse data = new WorkflowResponse();
         data.setId("id");
@@ -266,7 +266,7 @@ public class WorkflowHandlerTest extends TestCase {
         assertEquals(singleWorkflowResponse, response);
     }
 
-    public void test_updateWorkflowStatus() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_updateWorkflowStatus() throws IOException, TeleflowNetworkException, InterruptedException {
         SingleWorkflowResponse singleWorkflowResponse = new SingleWorkflowResponse();
         WorkflowResponse data = new WorkflowResponse();
         data.setId("id");

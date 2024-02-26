@@ -1,6 +1,6 @@
-package co.novu.api.blueprints.responses;
-import co.novu.api.blueprints.pojos.General;
-import co.novu.api.blueprints.pojos.Popular;
+package com.teleflow.api.blueprints.responses;
+import com.teleflow.api.blueprints.pojos.General;
+import com.teleflow.api.blueprints.pojos.Popular;
 import lombok.Data;
 
 import java.util.List;

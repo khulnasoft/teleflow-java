@@ -1,9 +1,9 @@
-package co.novu.api.workflowgroups;
+package com.teleflow.api.workflowgroups;
 
-import co.novu.api.workflowgroups.request.WorkflowGroupRequest;
-import co.novu.api.workflowgroups.responses.DeleteWorkflowGroup;
-import co.novu.api.workflowgroups.responses.GetWorkflowGroupsResponse;
-import co.novu.api.workflowgroups.responses.WorkflowGroupResponse;
+import com.teleflow.api.workflowgroups.request.WorkflowGroupRequest;
+import com.teleflow.api.workflowgroups.responses.DeleteWorkflowGroup;
+import com.teleflow.api.workflowgroups.responses.GetWorkflowGroupsResponse;
+import com.teleflow.api.workflowgroups.responses.WorkflowGroupResponse;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;

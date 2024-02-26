@@ -1,10 +1,10 @@
-package co.novu.api.tenants;
+package com.teleflow.api.tenants;
 
 import java.util.Map;
 
-import co.novu.api.tenants.requests.TenantRequest;
-import co.novu.api.tenants.responses.BulkTenantResponse;
-import co.novu.api.tenants.responses.TenantResponse;
+import com.teleflow.api.tenants.requests.TenantRequest;
+import com.teleflow.api.tenants.responses.BulkTenantResponse;
+import com.teleflow.api.tenants.responses.TenantResponse;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;

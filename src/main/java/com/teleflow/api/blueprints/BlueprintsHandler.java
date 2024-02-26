@@ -1,9 +1,9 @@
-package co.novu.api.blueprints;
+package com.teleflow.api.blueprints;
 
-import co.novu.api.blueprints.pojos.Blueprint;
-import co.novu.api.blueprints.responses.BlueprintsByCategoryResponse;
-import co.novu.common.rest.NovuNetworkException;
-import co.novu.common.rest.RestHandler;
+import com.teleflow.api.blueprints.pojos.Blueprint;
+import com.teleflow.api.blueprints.responses.BlueprintsByCategoryResponse;
+import com.teleflow.common.rest.TeleflowNetworkException;
+import com.teleflow.common.rest.RestHandler;
 import retrofit2.Response;
 
 import java.io.IOException;
@@ -19,12 +19,12 @@ public class BlueprintsHandler {
         this.blueprintsApi = restHandler.buildRetrofit().create(BlueprintsApi.class);
     }
 
-    public BlueprintsByCategoryResponse getBlueprintsByCategory() throws IOException, NovuNetworkException {
+    public BlueprintsByCategoryResponse getBlueprintsByCategory() throws IOException, TeleflowNetworkException {
         Response<BlueprintsByCategoryResponse> response = blueprintsApi.getBlueprintsByCategory().execute();
         return restHandler.extractResponse(response);
     }
 
-    public Blueprint getBlueprint(String templateId) throws IOException, NovuNetworkException {
+    public Blueprint getBlueprint(String templateId) throws IOException, TeleflowNetworkException {
         Response<Blueprint> response = blueprintsApi.getBlueprint(templateId).execute();
         return restHandler.extractResponse(response);
     }

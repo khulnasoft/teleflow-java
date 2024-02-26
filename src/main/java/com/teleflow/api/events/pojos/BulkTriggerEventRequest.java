@@ -1,7 +1,7 @@
-package co.novu.api.events.pojos;
+package com.teleflow.api.events.pojos;
 
-import co.novu.api.events.requests.TriggerEventRequest;
-import co.novu.common.contracts.IRequest;
+import com.teleflow.api.events.requests.TriggerEventRequest;
+import com.teleflow.common.contracts.IRequest;
 import lombok.Data;
 
 import java.util.List;

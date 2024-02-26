@@ -1,4 +1,4 @@
-package co.novu.api.topics.responses;
+package com.teleflow.api.topics.responses;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;

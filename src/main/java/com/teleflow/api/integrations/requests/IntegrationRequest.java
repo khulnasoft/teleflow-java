@@ -1,7 +1,7 @@
-package co.novu.api.integrations.requests;
+package com.teleflow.api.integrations.requests;
 
-import co.novu.api.integrations.pojo.Credentials;
-import co.novu.common.contracts.IRequest;
+import com.teleflow.api.integrations.pojo.Credentials;
+import com.teleflow.common.contracts.IRequest;
 import lombok.Data;
 
 @Data

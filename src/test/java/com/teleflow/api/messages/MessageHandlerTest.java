@@ -1,12 +1,12 @@
-package co.novu.api.messages;
+package com.teleflow.api.messages;
 
-import co.novu.api.messages.pojos.Message;
-import co.novu.api.messages.requests.MessageRequest;
-import co.novu.api.messages.responses.DeleteMessageResponse;
-import co.novu.api.messages.responses.MessageResponse;
-import co.novu.common.base.NovuConfig;
-import co.novu.common.rest.NovuNetworkException;
-import co.novu.common.rest.RestHandler;
+import com.teleflow.api.messages.pojos.Message;
+import com.teleflow.api.messages.requests.MessageRequest;
+import com.teleflow.api.messages.responses.DeleteMessageResponse;
+import com.teleflow.api.messages.responses.MessageResponse;
+import com.teleflow.common.base.TeleflowConfig;
+import com.teleflow.common.rest.TeleflowNetworkException;
+import com.teleflow.common.rest.RestHandler;
 import com.google.gson.Gson;
 import junit.framework.TestCase;
 import okhttp3.mockwebserver.MockResponse;
@@ -25,13 +25,13 @@ public class MessageHandlerTest extends TestCase {
     @Override
     protected void setUp() {
     	mockWebServer = new MockWebServer();
-    	NovuConfig novuConfig = new NovuConfig("1234");
-        novuConfig.setBaseUrl(mockWebServer.url("").toString());
-        RestHandler restHandler = new RestHandler(novuConfig);
+    	TeleflowConfig teleflowConfig = new TeleflowConfig("1234");
+        teleflowConfig.setBaseUrl(mockWebServer.url("").toString());
+        RestHandler restHandler = new RestHandler(teleflowConfig);
         messageHandler = new MessageHandler(restHandler);
     }
 
-    public void test_getMessagesWithNoParam() throws InterruptedException, NovuNetworkException, IOException {
+    public void test_getMessagesWithNoParam() throws InterruptedException, TeleflowNetworkException, IOException {
     	Gson gson = new Gson();
     	mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody("{}"));
 
@@ -44,7 +44,7 @@ public class MessageHandlerTest extends TestCase {
         assertEquals("{}", gson.toJson(response));
     }
 
-    public void test_getMessagesWithParams() throws NovuNetworkException, IOException, InterruptedException {
+    public void test_getMessagesWithParams() throws TeleflowNetworkException, IOException, InterruptedException {
         MessageResponse messageResponse = new MessageResponse();
         messageResponse.setPage(2L);
         messageResponse.setPageSize(20L);
@@ -67,7 +67,7 @@ public class MessageHandlerTest extends TestCase {
         assertEquals(gson.toJson(messageResponse), gson.toJson(response));
     }
 
-    public void test_deleteMessage() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_deleteMessage() throws IOException, TeleflowNetworkException, InterruptedException {
         DeleteMessageResponse deleteMessageResponse = new DeleteMessageResponse();
         deleteMessageResponse.setAcknowledged(true);
         deleteMessageResponse.setStatus("done");

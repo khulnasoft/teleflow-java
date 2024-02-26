@@ -1,6 +1,6 @@
-package co.novu.api.subscribers.responses;
+package com.teleflow.api.subscribers.responses;
 
-import co.novu.api.subscribers.pojos.SubscriberPreference;
+import com.teleflow.api.subscribers.pojos.SubscriberPreference;
 import lombok.Data;
 
 import java.util.List;

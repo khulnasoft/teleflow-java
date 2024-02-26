@@ -1,10 +1,10 @@
-package co.novu.api.inboundparse;
+package com.teleflow.api.inboundparse;
 
 import java.io.IOException;
 
-import co.novu.api.inboundparse.responses.ValidateMxRecordResponse;
-import co.novu.common.rest.NovuNetworkException;
-import co.novu.common.rest.RestHandler;
+import com.teleflow.api.inboundparse.responses.ValidateMxRecordResponse;
+import com.teleflow.common.rest.TeleflowNetworkException;
+import com.teleflow.common.rest.RestHandler;
 import retrofit2.Response;
 
 public class InboundParseHandler {
@@ -18,7 +18,7 @@ public class InboundParseHandler {
 		this.inboundParseApi = restHandler.buildRetrofit().create(InboundParseApi.class);
 	}
 
-	public ValidateMxRecordResponse validateMxRecordSetupForInboundParse() throws IOException, NovuNetworkException {
+	public ValidateMxRecordResponse validateMxRecordSetupForInboundParse() throws IOException, TeleflowNetworkException {
 		Response<ValidateMxRecordResponse> response = inboundParseApi.validateMxRecordSetupForInboundParse().execute();
         return restHandler.extractResponse(response);
     }

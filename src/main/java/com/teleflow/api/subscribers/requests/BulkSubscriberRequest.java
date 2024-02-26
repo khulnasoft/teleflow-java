@@ -1,7 +1,7 @@
-package co.novu.api.subscribers.requests;
+package com.teleflow.api.subscribers.requests;
 
-import co.novu.api.common.SubscriberRequest;
-import co.novu.common.contracts.IRequest;
+import com.teleflow.api.common.SubscriberRequest;
+import com.teleflow.common.contracts.IRequest;
 import lombok.Data;
 
 import java.util.List;

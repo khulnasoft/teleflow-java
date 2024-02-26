@@ -1,6 +1,6 @@
-package co.novu.api.topics.requests;
+package com.teleflow.api.topics.requests;
 
-import co.novu.common.contracts.IRequest;
+import com.teleflow.common.contracts.IRequest;
 import java.util.List;
 import lombok.Data;
 

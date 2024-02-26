@@ -1,6 +1,6 @@
-package co.novu.api.notifications.responses;
+package com.teleflow.api.notifications.responses;
 
-import co.novu.api.notifications.pojos.NotificationStats;
+import com.teleflow.api.notifications.pojos.NotificationStats;
 import lombok.Data;
 
 @Data

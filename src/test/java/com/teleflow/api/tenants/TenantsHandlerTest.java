@@ -1,14 +1,14 @@
-package co.novu.api.tenants;
+package com.teleflow.api.tenants;
 
-import co.novu.api.tenants.pojos.Tenant;
-import co.novu.api.tenants.requests.GetTenantRequest;
-import co.novu.api.tenants.requests.TenantRequest;
-import co.novu.api.tenants.responses.BulkTenantResponse;
-import co.novu.api.tenants.responses.DeleteTenantResponse;
-import co.novu.api.tenants.responses.TenantResponse;
-import co.novu.common.base.NovuConfig;
-import co.novu.common.rest.NovuNetworkException;
-import co.novu.common.rest.RestHandler;
+import com.teleflow.api.tenants.pojos.Tenant;
+import com.teleflow.api.tenants.requests.GetTenantRequest;
+import com.teleflow.api.tenants.requests.TenantRequest;
+import com.teleflow.api.tenants.responses.BulkTenantResponse;
+import com.teleflow.api.tenants.responses.DeleteTenantResponse;
+import com.teleflow.api.tenants.responses.TenantResponse;
+import com.teleflow.common.base.TeleflowConfig;
+import com.teleflow.common.rest.TeleflowNetworkException;
+import com.teleflow.common.rest.RestHandler;
 import com.google.gson.Gson;
 import junit.framework.TestCase;
 import okhttp3.mockwebserver.MockResponse;
@@ -26,13 +26,13 @@ public class TenantsHandlerTest extends TestCase {
     @Override
     protected void setUp() {
         mockWebServer = new MockWebServer();
-        NovuConfig novuConfig = new NovuConfig("1234");
-        novuConfig.setBaseUrl(mockWebServer.url("").toString());
-        RestHandler restHandler = new RestHandler(novuConfig);
+        TeleflowConfig teleflowConfig = new TeleflowConfig("1234");
+        teleflowConfig.setBaseUrl(mockWebServer.url("").toString());
+        RestHandler restHandler = new RestHandler(teleflowConfig);
         tenantsHandler = new TenantsHandler(restHandler);
     }
 
-    public void test_getTenantsNoParams() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_getTenantsNoParams() throws IOException, TeleflowNetworkException, InterruptedException {
         BulkTenantResponse bulkTenantResponse = new BulkTenantResponse();
         GetTenantRequest getTenantRequest = new GetTenantRequest();
 
@@ -47,7 +47,7 @@ public class TenantsHandlerTest extends TestCase {
         assertEquals(gson.toJson(bulkTenantResponse), gson.toJson(response));
     }
 
-    public void test_getTenantsWithParams() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_getTenantsWithParams() throws IOException, TeleflowNetworkException, InterruptedException {
         GetTenantRequest getTenantRequest = new GetTenantRequest();
         getTenantRequest.setPage(1);
         getTenantRequest.setLimit(20);
@@ -67,7 +67,7 @@ public class TenantsHandlerTest extends TestCase {
         assertEquals(gson.toJson(bulkTenantResponse), gson.toJson(response));
     }
 
-    public void test_createTenant() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_createTenant() throws IOException, TeleflowNetworkException, InterruptedException {
         TenantRequest tenantRequest = new TenantRequest();
         tenantRequest.setName("name");
         tenantRequest.setIdentifier("id");
@@ -86,7 +86,7 @@ public class TenantsHandlerTest extends TestCase {
         assertEquals(gson.toJson(tenantResponse), gson.toJson(response));
     }
 
-    public void test_getTenant() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_getTenant() throws IOException, TeleflowNetworkException, InterruptedException {
         TenantResponse tenantResponse = new TenantResponse();
         tenantResponse.setData(new Tenant());
 
@@ -101,7 +101,7 @@ public class TenantsHandlerTest extends TestCase {
         assertEquals(gson.toJson(tenantResponse), gson.toJson(response));
     }
 
-    public void test_updateTenant() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_updateTenant() throws IOException, TeleflowNetworkException, InterruptedException {
         TenantRequest tenantRequest = new TenantRequest();
         tenantRequest.setName("name");
         tenantRequest.setIdentifier("id");
@@ -120,7 +120,7 @@ public class TenantsHandlerTest extends TestCase {
         assertEquals(gson.toJson(tenantResponse), gson.toJson(response));
     }
 
-    public void test_deleteTenant() throws IOException, InterruptedException, NovuNetworkException {
+    public void test_deleteTenant() throws IOException, InterruptedException, TeleflowNetworkException {
         DeleteTenantResponse defaultTenantResponse = new DeleteTenantResponse();
         defaultTenantResponse.setStatus("Done");
         defaultTenantResponse.setAcknowledged(true);

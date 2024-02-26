@@ -1,6 +1,6 @@
-package co.novu.api.common;
+package com.teleflow.api.common;
 
-import co.novu.api.notifications.pojos.Children;
+import com.teleflow.api.notifications.pojos.Children;
 import lombok.Data;
 
 import java.util.List;

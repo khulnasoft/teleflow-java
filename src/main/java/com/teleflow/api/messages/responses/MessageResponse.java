@@ -1,6 +1,6 @@
-package co.novu.api.messages.responses;
+package com.teleflow.api.messages.responses;
 
-import co.novu.api.messages.pojos.Message;
+import com.teleflow.api.messages.pojos.Message;
 import lombok.Data;
 
 import java.util.List;

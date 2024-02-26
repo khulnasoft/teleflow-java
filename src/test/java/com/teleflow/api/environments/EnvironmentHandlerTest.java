@@ -1,17 +1,17 @@
-package co.novu.api.environments;
+package com.teleflow.api.environments;
 
-import co.novu.api.environments.pojos.ApiKey;
-import co.novu.api.environments.pojos.Dns;
-import co.novu.api.environments.pojos.Widget;
-import co.novu.api.environments.requests.CreateEnvironmentRequest;
-import co.novu.api.environments.requests.UpdateEnvironmentRequest;
-import co.novu.api.environments.responses.ApiKeyResponse;
-import co.novu.api.environments.responses.BulkEnvironmentResponse;
-import co.novu.api.environments.responses.EnvironmentResponse;
-import co.novu.api.environments.responses.SingleEnvironmentResponse;
-import co.novu.common.base.NovuConfig;
-import co.novu.common.rest.NovuNetworkException;
-import co.novu.common.rest.RestHandler;
+import com.teleflow.api.environments.pojos.ApiKey;
+import com.teleflow.api.environments.pojos.Dns;
+import com.teleflow.api.environments.pojos.Widget;
+import com.teleflow.api.environments.requests.CreateEnvironmentRequest;
+import com.teleflow.api.environments.requests.UpdateEnvironmentRequest;
+import com.teleflow.api.environments.responses.ApiKeyResponse;
+import com.teleflow.api.environments.responses.BulkEnvironmentResponse;
+import com.teleflow.api.environments.responses.EnvironmentResponse;
+import com.teleflow.api.environments.responses.SingleEnvironmentResponse;
+import com.teleflow.common.base.TeleflowConfig;
+import com.teleflow.common.rest.TeleflowNetworkException;
+import com.teleflow.common.rest.RestHandler;
 import com.google.gson.Gson;
 import junit.framework.TestCase;
 import okhttp3.mockwebserver.MockResponse;
@@ -30,13 +30,13 @@ public class EnvironmentHandlerTest extends TestCase {
     @Override
     protected void setUp() {
         mockWebServer = new MockWebServer();
-        NovuConfig novuConfig = new NovuConfig("1234");
-        novuConfig.setBaseUrl(mockWebServer.url("").toString());
-        RestHandler restHandler = new RestHandler(novuConfig);
+        TeleflowConfig teleflowConfig = new TeleflowConfig("1234");
+        teleflowConfig.setBaseUrl(mockWebServer.url("").toString());
+        RestHandler restHandler = new RestHandler(teleflowConfig);
         environmentHandler = new EnvironmentHandler(restHandler);
     }
 
-    public void test_getCurrentEnvironment() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_getCurrentEnvironment() throws IOException, TeleflowNetworkException, InterruptedException {
 
         SingleEnvironmentResponse singleEnvironmentResponse = new SingleEnvironmentResponse();
         EnvironmentResponse data = new EnvironmentResponse();
@@ -64,7 +64,7 @@ public class EnvironmentHandlerTest extends TestCase {
         assertEquals(gson.toJson(singleEnvironmentResponse), gson.toJson(response));
     }
 
-    public void test_createEnvironment() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_createEnvironment() throws IOException, TeleflowNetworkException, InterruptedException {
 
         CreateEnvironmentRequest createEnvironmentRequest = new CreateEnvironmentRequest();
         createEnvironmentRequest.setName("name");
@@ -96,7 +96,7 @@ public class EnvironmentHandlerTest extends TestCase {
         assertEquals(gson.toJson(singleEnvironmentResponse), gson.toJson(response));
     }
 
-    public void test_getEnvironments() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_getEnvironments() throws IOException, TeleflowNetworkException, InterruptedException {
 
         BulkEnvironmentResponse bulkEnvironmentResponse = new BulkEnvironmentResponse();
         bulkEnvironmentResponse.setData(Collections.singletonList(new EnvironmentResponse()));
@@ -112,7 +112,7 @@ public class EnvironmentHandlerTest extends TestCase {
         assertEquals(gson.toJson(bulkEnvironmentResponse), gson.toJson(response));
     }
 
-    public void test_updateEnvironmentById() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_updateEnvironmentById() throws IOException, TeleflowNetworkException, InterruptedException {
 
         UpdateEnvironmentRequest updateEnvironmentRequest = new UpdateEnvironmentRequest();
         updateEnvironmentRequest.setName("name");
@@ -148,7 +148,7 @@ public class EnvironmentHandlerTest extends TestCase {
         assertEquals(gson.toJson(singleEnvironmentResponse), gson.toJson(response));
     }
 
-    public void test_getApiKeys() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_getApiKeys() throws IOException, TeleflowNetworkException, InterruptedException {
         ApiKeyResponse apiKeyResponse = new ApiKeyResponse();
         apiKeyResponse.setData(Collections.singletonList(new ApiKey()));
         
@@ -163,7 +163,7 @@ public class EnvironmentHandlerTest extends TestCase {
         assertEquals(gson.toJson(apiKeyResponse), gson.toJson(response));
     }
 
-    public void test_regenerateApiKeys() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_regenerateApiKeys() throws IOException, TeleflowNetworkException, InterruptedException {
 
         ApiKeyResponse apiKeyResponse = new ApiKeyResponse();
         apiKeyResponse.setData(Collections.singletonList(new ApiKey()));

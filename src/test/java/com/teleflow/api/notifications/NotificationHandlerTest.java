@@ -1,16 +1,16 @@
-package co.novu.api.notifications;
+package com.teleflow.api.notifications;
 
-import co.novu.api.notifications.pojos.Notification;
-import co.novu.api.notifications.pojos.NotificationGraphStats;
-import co.novu.api.notifications.pojos.NotificationStats;
-import co.novu.api.notifications.requests.NotificationRequest;
-import co.novu.api.notifications.responses.NotificationGraphStatsResponse;
-import co.novu.api.notifications.responses.NotificationResponse;
-import co.novu.api.notifications.responses.NotificationStatsResponse;
-import co.novu.api.notifications.responses.NotificationsResponse;
-import co.novu.common.base.NovuConfig;
-import co.novu.common.rest.NovuNetworkException;
-import co.novu.common.rest.RestHandler;
+import com.teleflow.api.notifications.pojos.Notification;
+import com.teleflow.api.notifications.pojos.NotificationGraphStats;
+import com.teleflow.api.notifications.pojos.NotificationStats;
+import com.teleflow.api.notifications.requests.NotificationRequest;
+import com.teleflow.api.notifications.responses.NotificationGraphStatsResponse;
+import com.teleflow.api.notifications.responses.NotificationResponse;
+import com.teleflow.api.notifications.responses.NotificationStatsResponse;
+import com.teleflow.api.notifications.responses.NotificationsResponse;
+import com.teleflow.common.base.TeleflowConfig;
+import com.teleflow.common.rest.TeleflowNetworkException;
+import com.teleflow.common.rest.RestHandler;
 import com.google.gson.Gson;
 import junit.framework.TestCase;
 import okhttp3.mockwebserver.MockResponse;
@@ -32,13 +32,13 @@ public class NotificationHandlerTest extends TestCase {
     @Override
     protected void setUp() {
         mockWebServer = new MockWebServer();
-        NovuConfig novuConfig = new NovuConfig("1234");
-        novuConfig.setBaseUrl(mockWebServer.url("").toString());
-        RestHandler restHandler = new RestHandler(novuConfig);
+        TeleflowConfig teleflowConfig = new TeleflowConfig("1234");
+        teleflowConfig.setBaseUrl(mockWebServer.url("").toString());
+        RestHandler restHandler = new RestHandler(teleflowConfig);
         notificationHandler = new NotificationHandler(restHandler);
     }
 
-    public void test_getNotifications() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_getNotifications() throws IOException, TeleflowNetworkException, InterruptedException {
         NotificationRequest request = new NotificationRequest();
         request.setPage(1);
         request.setTransactionId("tId");
@@ -62,7 +62,7 @@ public class NotificationHandlerTest extends TestCase {
         assertEquals(notificationsResponse, response);
     }
 
-    public void test_getNotificationsStats() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_getNotificationsStats() throws IOException, TeleflowNetworkException, InterruptedException {
         NotificationStatsResponse notificationsResponse = new NotificationStatsResponse();
         NotificationStats notificationStats = new NotificationStats();
         notificationStats.setWeeklySent(20L);
@@ -79,7 +79,7 @@ public class NotificationHandlerTest extends TestCase {
         assertEquals(notificationsResponse, response);
     }
 
-    public void test_getNotificationGraphStats() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_getNotificationGraphStats() throws IOException, TeleflowNetworkException, InterruptedException {
         NotificationGraphStatsResponse notificationsResponse = new NotificationGraphStatsResponse();
         NotificationGraphStats notificationGraphStats = new NotificationGraphStats();
         notificationGraphStats.setCount(200L);
@@ -95,7 +95,7 @@ public class NotificationHandlerTest extends TestCase {
         assertEquals(notificationsResponse, response);
     }
 
-    public void test_getNotification() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_getNotification() throws IOException, TeleflowNetworkException, InterruptedException {
         NotificationResponse notificationsResponse = new NotificationResponse();
         Notification notification = new Notification();
         notification.setTransactionId("tid");

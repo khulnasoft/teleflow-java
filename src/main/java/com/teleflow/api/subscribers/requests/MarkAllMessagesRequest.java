@@ -1,6 +1,6 @@
-package co.novu.api.subscribers.requests;
+package com.teleflow.api.subscribers.requests;
 
-import co.novu.common.contracts.IRequest;
+import com.teleflow.common.contracts.IRequest;
 import lombok.Data;
 
 @Data

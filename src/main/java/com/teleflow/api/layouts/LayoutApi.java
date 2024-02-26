@@ -1,11 +1,11 @@
-package co.novu.api.layouts;
+package com.teleflow.api.layouts;
 
-import co.novu.api.layouts.requests.LayoutRequest;
-import co.novu.api.layouts.responses.CreateLayoutResponse;
-import co.novu.api.layouts.responses.DeleteLayoutResponse;
-import co.novu.api.layouts.responses.FilterLayoutResponse;
-import co.novu.api.layouts.responses.GetLayoutResponse;
-import co.novu.api.layouts.responses.SetDefaultLayoutResponse;
+import com.teleflow.api.layouts.requests.LayoutRequest;
+import com.teleflow.api.layouts.responses.CreateLayoutResponse;
+import com.teleflow.api.layouts.responses.DeleteLayoutResponse;
+import com.teleflow.api.layouts.responses.FilterLayoutResponse;
+import com.teleflow.api.layouts.responses.GetLayoutResponse;
+import com.teleflow.api.layouts.responses.SetDefaultLayoutResponse;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;

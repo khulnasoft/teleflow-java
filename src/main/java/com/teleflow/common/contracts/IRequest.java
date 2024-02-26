@@ -1,4 +1,4 @@
-package co.novu.common.contracts;
+package com.teleflow.common.contracts;
 
 public interface IRequest {
 }

@@ -1,17 +1,17 @@
-package co.novu.api.organizations;
+package com.teleflow.api.organizations;
 
-import co.novu.api.organizations.requests.CreateOrganizationRequest;
-import co.novu.api.organizations.requests.UpdateMemberRoleRequest;
-import co.novu.api.organizations.requests.UpdateOrganizationBrandRequest;
-import co.novu.api.organizations.requests.UpdateOrganizationNameRequest;
-import co.novu.api.organizations.responses.FetchMembersResponse;
-import co.novu.api.organizations.responses.UpdateOrganizationBrandResponse;
-import co.novu.api.organizations.responses.MemberResponse;
-import co.novu.api.organizations.responses.OrganizationResponse;
-import co.novu.api.organizations.responses.FetchOrganizationResponse;
-import co.novu.api.organizations.responses.UpdateOrganizationNameResponse;
-import co.novu.common.rest.NovuNetworkException;
-import co.novu.common.rest.RestHandler;
+import com.teleflow.api.organizations.requests.CreateOrganizationRequest;
+import com.teleflow.api.organizations.requests.UpdateMemberRoleRequest;
+import com.teleflow.api.organizations.requests.UpdateOrganizationBrandRequest;
+import com.teleflow.api.organizations.requests.UpdateOrganizationNameRequest;
+import com.teleflow.api.organizations.responses.FetchMembersResponse;
+import com.teleflow.api.organizations.responses.UpdateOrganizationBrandResponse;
+import com.teleflow.api.organizations.responses.MemberResponse;
+import com.teleflow.api.organizations.responses.OrganizationResponse;
+import com.teleflow.api.organizations.responses.FetchOrganizationResponse;
+import com.teleflow.api.organizations.responses.UpdateOrganizationNameResponse;
+import com.teleflow.common.rest.TeleflowNetworkException;
+import com.teleflow.common.rest.RestHandler;
 import lombok.RequiredArgsConstructor;
 import retrofit2.Response;
 
@@ -30,42 +30,42 @@ public class OrganizationHandler {
     }
 
 
-    public OrganizationResponse createOrganization(CreateOrganizationRequest request) throws IOException, NovuNetworkException {
+    public OrganizationResponse createOrganization(CreateOrganizationRequest request) throws IOException, TeleflowNetworkException {
         Response<OrganizationResponse> response = organizationApi.createOrganization(request).execute();
         return restHandler.extractResponse(response);
     }
 
-    public FetchOrganizationResponse fetchAllOrganizations() throws IOException, NovuNetworkException {
+    public FetchOrganizationResponse fetchAllOrganizations() throws IOException, TeleflowNetworkException {
         Response<FetchOrganizationResponse> response = organizationApi.fetchAllOrganizations().execute();
         return restHandler.extractResponse(response);
     }
 
-    public UpdateOrganizationNameResponse updateOrganizationName(UpdateOrganizationNameRequest request) throws IOException, NovuNetworkException {
+    public UpdateOrganizationNameResponse updateOrganizationName(UpdateOrganizationNameRequest request) throws IOException, TeleflowNetworkException {
         Response<UpdateOrganizationNameResponse> response = organizationApi.updateOrganizationName(request).execute();
         return restHandler.extractResponse(response);
     }
 
-    public OrganizationResponse fetchCurrentOrganization() throws IOException, NovuNetworkException{
+    public OrganizationResponse fetchCurrentOrganization() throws IOException, TeleflowNetworkException{
         Response<OrganizationResponse> response = organizationApi.fetchCurrentOrganization().execute();
         return restHandler.extractResponse(response);
     }
 
-    public MemberResponse removeMemberWithId(String memberId) throws IOException, NovuNetworkException {
+    public MemberResponse removeMemberWithId(String memberId) throws IOException, TeleflowNetworkException {
         Response<MemberResponse> response = organizationApi.removeMemberWithId(memberId).execute();
         return restHandler.extractResponse(response);
     }
 
-    public MemberResponse updateMemberRole(String memberId, UpdateMemberRoleRequest request) throws IOException, NovuNetworkException {
+    public MemberResponse updateMemberRole(String memberId, UpdateMemberRoleRequest request) throws IOException, TeleflowNetworkException {
         Response<MemberResponse> response = organizationApi.updateMemberRole(memberId,request).execute();
         return restHandler.extractResponse(response);
     }
 
-    public FetchMembersResponse fetchMembersOfOrganization() throws IOException, NovuNetworkException {
+    public FetchMembersResponse fetchMembersOfOrganization() throws IOException, TeleflowNetworkException {
         Response<FetchMembersResponse> response = organizationApi.fetchMembersOfOrganization().execute();
         return restHandler.extractResponse(response);
     }
 
-    public UpdateOrganizationBrandResponse updateOrganizationBrand(UpdateOrganizationBrandRequest request) throws IOException, NovuNetworkException {
+    public UpdateOrganizationBrandResponse updateOrganizationBrand(UpdateOrganizationBrandRequest request) throws IOException, TeleflowNetworkException {
         Response<UpdateOrganizationBrandResponse> response = organizationApi.updateOrganizationBrand(request).execute();
         return restHandler.extractResponse(response);
     }

@@ -1,4 +1,4 @@
-package co.novu.api.blueprints.responses;
+package com.teleflow.api.blueprints.responses;
 
 import lombok.Data;
 

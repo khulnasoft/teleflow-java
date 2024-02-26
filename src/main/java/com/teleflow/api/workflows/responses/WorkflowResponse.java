@@ -1,10 +1,10 @@
-package co.novu.api.workflows.responses;
+package com.teleflow.api.workflows.responses;
 
-import co.novu.api.common.Step;
-import co.novu.api.common.Trigger;
-import co.novu.api.common.NotificationGroup;
-import co.novu.api.common.PreferenceSettings;
-import co.novu.api.workflows.pojos.WorkflowIntegrationStatus;
+import com.teleflow.api.common.Step;
+import com.teleflow.api.common.Trigger;
+import com.teleflow.api.common.NotificationGroup;
+import com.teleflow.api.common.PreferenceSettings;
+import com.teleflow.api.workflows.pojos.WorkflowIntegrationStatus;
 import lombok.Data;
 
 import java.util.List;

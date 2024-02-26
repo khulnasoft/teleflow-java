@@ -1,9 +1,9 @@
-package co.novu.api.messages;
+package com.teleflow.api.messages;
 
 import java.util.Map;
 
-import co.novu.api.messages.responses.DeleteMessageResponse;
-import co.novu.api.messages.responses.MessageResponse;
+import com.teleflow.api.messages.responses.DeleteMessageResponse;
+import com.teleflow.api.messages.responses.MessageResponse;
 import retrofit2.Call;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;

@@ -1,6 +1,6 @@
-package co.novu.api.organizations.responses;
+package com.teleflow.api.organizations.responses;
 
-import co.novu.api.organizations.pojos.Branding;
+import com.teleflow.api.organizations.pojos.Branding;
 import lombok.Data;
 
 

@@ -1,13 +1,13 @@
-package co.novu.api.blueprints;
+package com.teleflow.api.blueprints;
 
-import co.novu.api.blueprints.pojos.Blueprint;
-import co.novu.api.blueprints.responses.BlueprintsResponseData;
-import co.novu.api.blueprints.pojos.General;
-import co.novu.api.blueprints.pojos.Popular;
-import co.novu.api.blueprints.responses.BlueprintsByCategoryResponse;
-import co.novu.common.base.NovuConfig;
-import co.novu.common.rest.NovuNetworkException;
-import co.novu.common.rest.RestHandler;
+import com.teleflow.api.blueprints.pojos.Blueprint;
+import com.teleflow.api.blueprints.responses.BlueprintsResponseData;
+import com.teleflow.api.blueprints.pojos.General;
+import com.teleflow.api.blueprints.pojos.Popular;
+import com.teleflow.api.blueprints.responses.BlueprintsByCategoryResponse;
+import com.teleflow.common.base.TeleflowConfig;
+import com.teleflow.common.rest.TeleflowNetworkException;
+import com.teleflow.common.rest.RestHandler;
 import com.google.gson.Gson;
 import junit.framework.TestCase;
 import okhttp3.mockwebserver.MockResponse;
@@ -26,13 +26,13 @@ public class BlueprintsHandlerTest extends TestCase {
     @Override
     protected void setUp() {
         mockWebServer = new MockWebServer();
-        NovuConfig novuConfig = new NovuConfig("1234");
-        novuConfig.setBaseUrl(mockWebServer.url("").toString());
-        RestHandler restHandler = new RestHandler(novuConfig);
+        TeleflowConfig teleflowConfig = new TeleflowConfig("1234");
+        teleflowConfig.setBaseUrl(mockWebServer.url("").toString());
+        RestHandler restHandler = new RestHandler(teleflowConfig);
         blueprintsHandler = new BlueprintsHandler(restHandler);
     }
 
-    public void test_getBlueprintsByCategory() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_getBlueprintsByCategory() throws IOException, TeleflowNetworkException, InterruptedException {
         BlueprintsResponseData data = new BlueprintsResponseData();
         data.setGeneral(List.of(new General()));
         data.setPopular(new Popular());
@@ -50,7 +50,7 @@ public class BlueprintsHandlerTest extends TestCase {
         assertEquals(gson.toJson(byCategoryResponse), gson.toJson(response));
     }
 
-    public void test_getBlueprint() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_getBlueprint() throws IOException, TeleflowNetworkException, InterruptedException {
         Blueprint blueprint = new Blueprint();
         blueprint.setName("print");
         blueprint.setActive(true);

@@ -1,5 +1,5 @@
 <div align="center">
-  <a href="https://novu.co" target="_blank">
+  <a href="https://teleflow.co" target="_blank">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://user-images.githubusercontent.com/2233092/213641039-220ac15f-f367-4d13-9eaf-56e79433b8c1.png">
     <img src="https://user-images.githubusercontent.com/2233092/213641043-3bbb3f21-3c53-4e67-afe5-755aeb222159.png" width="280" alt="Logo"/>
@@ -7,18 +7,18 @@
   </a>
 </div>
 
-# Novu Java SDK
+# Teleflow Java SDK
 
-[![License](https://poser.pugx.org/unicodeveloper/novu/license.svg)](LICENSE.md)
-[![GitHub release (with filter)](https://img.shields.io/github/v/release/novuhq/novu-java?label=SDK&link=https%3A%2F%2Fgithub.com%2Fnovuhq%2Fnovu-java%2Freleases%2Flatest)](https://github.com/novuhq/novu-java/releases/latest)
+[![License](https://poser.pugx.org/unicodeveloper/teleflow/license.svg)](LICENSE.md)
+[![GitHub release (with filter)](https://img.shields.io/github/v/release/khulnasoft/teleflow-java?label=SDK&link=https%3A%2F%2Fgithub.com%2Fkhulnasoft%2Fteleflow-java%2Freleases%2Flatest)](https://github.com/khulnasoft/teleflow-java/releases/latest)
 
-The [Novu Java](https://novu.co) SDK provides a fluent and expressive interface for interacting with [Novu's API](https://docs.novu.co/api-reference/overview) and managing notifications. Please refer to the full [documentation](https://docs.novu.co/docs/overview/introduction) to learn more.
+The [Teleflow Java](https://teleflow.co) SDK provides a fluent and expressive interface for interacting with [Teleflow's API](https://docs.teleflow.co/api-reference/overview) and managing notifications. Please refer to the full [documentation](https://docs.teleflow.co/docs/overview/introduction) to learn more.
 
 ## Contents
 
 * [Installation](#installation)
 * [Usage](#usage)
-    * [Novu API Reference](https://docs.novu.co/api-reference/events/trigger-event)
+    * [Teleflow API Reference](https://docs.teleflow.co/api-reference/events/trigger-event)
     * [Events](#events)
     * [Subscribers](#subscribers)
     * [Topics](#topics)
@@ -44,8 +44,8 @@ The [Novu Java](https://novu.co) SDK provides a fluent and expressive interface 
 ```xml
 <!--add dependency-->
 <dependency>
-    <groupId>co.novu</groupId>
-    <artifactId>novu-java</artifactId>
+    <groupId>com.teleflow</groupId>
+    <artifactId>teleflow-java</artifactId>
     <version>1.5.0</version>
 </dependency>
 ```
@@ -54,33 +54,33 @@ The [Novu Java](https://novu.co) SDK provides a fluent and expressive interface 
 ```gradle
 // add dependency
 dependencies {
-    implementation 'co.novu:novu-java:1.5.0'
+    implementation 'com.teleflow:teleflow-java:1.5.0'
 }
 ```
 Sync your project, and you should have the artifacts downloaded.
 
 ## Usage
 
-First, create an instance of the **Novu SDK** like so:
+First, create an instance of the **Teleflow SDK** like so:
 ```java
-import co.novu.sdk.Novu;
+import com.teleflow.sdk.Teleflow;
 
 public class Main {
     public static void main(String[] args) {
         String apiKey = "INSERT_API_KEY_HERE";
         // Using the API Key only
-        Novu novu = new Novu(apiKey);
+        Teleflow teleflow = new Teleflow(apiKey);
 
         // Using the Config Param
-        NovuConfig novuConfig = new NovuConfig(apiKey);
-        Novu novu = new Novu(novuConfig);
+        TeleflowConfig teleflowConfig = new TeleflowConfig(apiKey);
+        Teleflow teleflow = new Teleflow(teleflowConfig);
 
         // Sample usage
-        novu.triggerEvent(event);
+        teleflow.triggerEvent(event);
     }
 }
 
-// Sign up on https://web.novu.co and grab your API key from https://web.novu.co/settings
+// Sign up on https://web.teleflow.co and grab your API key from https://web.teleflow.co/settings
 ```
 
 ### Events
@@ -456,23 +456,23 @@ public class Main {
 - `updateTenant(body, identifier)`
 - `deleteTenant(identifier)`
 
-### For more information about these methods and their parameters, see the [API documentation](https://docs.novu.co/api/overview).
+### For more information about these methods and their parameters, see the [API documentation](https://docs.teleflow.co/api/overview).
 
 ## Contributing
 
-Feature requests, bug reports and pull requests are welcome. Please create an [issue](https://github.com/novuhq/novu-java/issues).
+Feature requests, bug reports and pull requests are welcome. Please create an [issue](https://github.com/khulnasoft/teleflow-java/issues).
 
 ## Support and Feedback
 
-Be sure to visit the Novu official [documentation website](https://docs.novu.co/docs) for additional information about our API.
-If you need additional assistance, join our Discord server [here](https://discord.novu.co).
+Be sure to visit the Teleflow official [documentation website](https://docs.teleflow.co/docs) for additional information about our API.
+If you need additional assistance, join our Discord server [here](https://discord.teleflow.co).
 
 ## License
 
-Novu Java SDK is licensed under the MIT License - see the [LICENSE](https://github.com/novuhq/novu-java/blob/main/LICENSE.md) file for details.
+Teleflow Java SDK is licensed under the MIT License - see the [LICENSE](https://github.com/khulnasoft/teleflow-java/blob/main/LICENSE.md) file for details.
 
 ## Contributors
 
-<a href="https://github.com/novuhq/novu-java/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=novuhq/novu-java&max=500&columns=20"  alt="Contributors"/>
+<a href="https://github.com/khulnasoft/teleflow-java/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=khulnasoft/teleflow-java&max=500&columns=20"  alt="Contributors"/>
 </a>

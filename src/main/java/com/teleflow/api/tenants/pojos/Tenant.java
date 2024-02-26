@@ -1,4 +1,4 @@
-package co.novu.api.tenants.pojos;
+package com.teleflow.api.tenants.pojos;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;

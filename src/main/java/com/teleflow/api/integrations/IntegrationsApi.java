@@ -1,9 +1,9 @@
-package co.novu.api.integrations;
+package com.teleflow.api.integrations;
 
-import co.novu.api.integrations.requests.IntegrationRequest;
-import co.novu.api.integrations.responses.BulkIntegrationResponse;
-import co.novu.api.integrations.responses.ProviderWebhookStatusResponse;
-import co.novu.api.integrations.responses.SingleIntegrationResponse;
+import com.teleflow.api.integrations.requests.IntegrationRequest;
+import com.teleflow.api.integrations.responses.BulkIntegrationResponse;
+import com.teleflow.api.integrations.responses.ProviderWebhookStatusResponse;
+import com.teleflow.api.integrations.responses.SingleIntegrationResponse;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;

@@ -1,17 +1,17 @@
-package co.novu.api.workflowoverride;
+package com.teleflow.api.workflowoverride;
 
-import co.novu.api.common.PreferenceSettings;
-import co.novu.api.workflowoverrides.WorkflowOverrideHandler;
-import co.novu.api.workflowoverrides.pojos.WorkflowOverride;
-import co.novu.api.workflowoverrides.request.CreateWorkflowOverrideRequest;
-import co.novu.api.workflowoverrides.request.GetWorkflowOverrideRequest;
-import co.novu.api.workflowoverrides.request.UpdateWorkflowOverrideRequest;
-import co.novu.api.workflowoverrides.response.BulkWorkflowOverridesResponse;
-import co.novu.api.workflowoverrides.response.DeleteWorkflowOverrideResponse;
-import co.novu.api.workflowoverrides.response.WorkflowOverrideResponse;
-import co.novu.common.base.NovuConfig;
-import co.novu.common.rest.NovuNetworkException;
-import co.novu.common.rest.RestHandler;
+import com.teleflow.api.common.PreferenceSettings;
+import com.teleflow.api.workflowoverrides.WorkflowOverrideHandler;
+import com.teleflow.api.workflowoverrides.pojos.WorkflowOverride;
+import com.teleflow.api.workflowoverrides.request.CreateWorkflowOverrideRequest;
+import com.teleflow.api.workflowoverrides.request.GetWorkflowOverrideRequest;
+import com.teleflow.api.workflowoverrides.request.UpdateWorkflowOverrideRequest;
+import com.teleflow.api.workflowoverrides.response.BulkWorkflowOverridesResponse;
+import com.teleflow.api.workflowoverrides.response.DeleteWorkflowOverrideResponse;
+import com.teleflow.api.workflowoverrides.response.WorkflowOverrideResponse;
+import com.teleflow.common.base.TeleflowConfig;
+import com.teleflow.common.rest.TeleflowNetworkException;
+import com.teleflow.common.rest.RestHandler;
 import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;
 import okhttp3.mockwebserver.RecordedRequest;
@@ -32,13 +32,13 @@ public class WorkflowOverrideHandlerTest extends TestCase {
     @Override
     protected void setUp() {
         mockWebServer = new MockWebServer();
-        NovuConfig novuConfig = new NovuConfig("1234");
-        novuConfig.setBaseUrl(mockWebServer.url("").toString());
-        RestHandler restHandler = new RestHandler(novuConfig);
+        TeleflowConfig teleflowConfig = new TeleflowConfig("1234");
+        teleflowConfig.setBaseUrl(mockWebServer.url("").toString());
+        RestHandler restHandler = new RestHandler(teleflowConfig);
         workflowOverrideHandler = new WorkflowOverrideHandler(restHandler);
     }
 
-    public void test_createWorkflowOverrideHandler() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_createWorkflowOverrideHandler() throws IOException, TeleflowNetworkException, InterruptedException {
         WorkflowOverrideResponse workflowOverrideResponse = getWorkflowOverrideResponse();
         Gson gson = new Gson();
         mockWebServer.enqueue(new MockResponse().setResponseCode(201).setBody(gson.toJson(workflowOverrideResponse)));
@@ -50,7 +50,7 @@ public class WorkflowOverrideHandlerTest extends TestCase {
         assertEquals(gson.toJson(workflowOverrideResponse), gson.toJson(response));
     }
 
-    public void test_getWorkflowOverrides() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_getWorkflowOverrides() throws IOException, TeleflowNetworkException, InterruptedException {
         BulkWorkflowOverridesResponse workflowOverridesResponse = getWorkflowOverridesResponse();
         Gson gson = new Gson();
         mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(gson.toJson(workflowOverridesResponse)));
@@ -65,7 +65,7 @@ public class WorkflowOverrideHandlerTest extends TestCase {
         assertEquals(gson.toJson(workflowOverridesResponse), gson.toJson(response));
     }
 
-    public void test_getWorkflowOverrideById() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_getWorkflowOverrideById() throws IOException, TeleflowNetworkException, InterruptedException {
         WorkflowOverrideResponse workflowOverrideResponse = getWorkflowOverrideResponse();
         Gson gson = new Gson();
         mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(gson.toJson(workflowOverrideResponse)));
@@ -77,7 +77,7 @@ public class WorkflowOverrideHandlerTest extends TestCase {
         assertEquals(gson.toJson(workflowOverrideResponse), gson.toJson(response));
     }
 
-    public void test_getWorkflowOverride() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_getWorkflowOverride() throws IOException, TeleflowNetworkException, InterruptedException {
         WorkflowOverrideResponse workflowOverrideResponse = getWorkflowOverrideResponse();
         Gson gson = new Gson();
         mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(gson.toJson(workflowOverrideResponse)));
@@ -89,7 +89,7 @@ public class WorkflowOverrideHandlerTest extends TestCase {
         assertEquals(gson.toJson(workflowOverrideResponse), gson.toJson(response));
     }
 
-    public void test_updateWorkflowOverrideById() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_updateWorkflowOverrideById() throws IOException, TeleflowNetworkException, InterruptedException {
         WorkflowOverrideResponse workflowOverrideResponse = getWorkflowOverrideResponse();
         Gson gson = new Gson();
         mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(gson.toJson(workflowOverrideResponse)));
@@ -102,7 +102,7 @@ public class WorkflowOverrideHandlerTest extends TestCase {
         assertEquals(gson.toJson(workflowOverrideResponse), gson.toJson(response));
     }
 
-    public void test_updateWorkflowOverride() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_updateWorkflowOverride() throws IOException, TeleflowNetworkException, InterruptedException {
         WorkflowOverrideResponse workflowOverrideResponse = getWorkflowOverrideResponse();
         Gson gson = new Gson();
         mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(gson.toJson(workflowOverrideResponse)));
@@ -116,7 +116,7 @@ public class WorkflowOverrideHandlerTest extends TestCase {
         assertEquals(gson.toJson(workflowOverrideResponse), gson.toJson(response));
     }
 
-    public void test_deleteWorkflowOverride() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_deleteWorkflowOverride() throws IOException, TeleflowNetworkException, InterruptedException {
         DeleteWorkflowOverrideResponse deleteResponse = new DeleteWorkflowOverrideResponse();
         deleteResponse.setData(true);
         Gson gson = new Gson();

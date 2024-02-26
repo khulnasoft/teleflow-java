@@ -1,14 +1,14 @@
-package co.novu.api.changes;
+package com.teleflow.api.changes;
 
-import co.novu.api.changes.request.ApplyChangesRequest;
-import co.novu.api.changes.request.GetChangesRequest;
-import co.novu.api.changes.responses.ApplyChangesResponse;
-import co.novu.api.changes.responses.ChangeCountResponse;
-import co.novu.api.changes.responses.ChangesData;
-import co.novu.api.changes.responses.GetChangesResponse;
-import co.novu.common.base.NovuConfig;
-import co.novu.common.rest.NovuNetworkException;
-import co.novu.common.rest.RestHandler;
+import com.teleflow.api.changes.request.ApplyChangesRequest;
+import com.teleflow.api.changes.request.GetChangesRequest;
+import com.teleflow.api.changes.responses.ApplyChangesResponse;
+import com.teleflow.api.changes.responses.ChangeCountResponse;
+import com.teleflow.api.changes.responses.ChangesData;
+import com.teleflow.api.changes.responses.GetChangesResponse;
+import com.teleflow.common.base.TeleflowConfig;
+import com.teleflow.common.rest.TeleflowNetworkException;
+import com.teleflow.common.rest.RestHandler;
 import com.google.gson.Gson;
 import junit.framework.TestCase;
 
@@ -28,13 +28,13 @@ public class ChangeHandlerTest extends TestCase {
     @Override
     protected void setUp() {
         mockWebServer = new MockWebServer();
-        NovuConfig novuConfig = new NovuConfig("1234");
-        novuConfig.setBaseUrl(mockWebServer.url("").toString());
-        RestHandler restHandler = new RestHandler(novuConfig);
+        TeleflowConfig teleflowConfig = new TeleflowConfig("1234");
+        teleflowConfig.setBaseUrl(mockWebServer.url("").toString());
+        RestHandler restHandler = new RestHandler(teleflowConfig);
         changeHandler = new ChangeHandler(restHandler);
     }
 
-    public void test_getChanges() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_getChanges() throws IOException, TeleflowNetworkException, InterruptedException {
         GetChangesResponse changesResponse = new GetChangesResponse();
         changesResponse.setPage(2);
         changesResponse.setPageSize(20);
@@ -56,7 +56,7 @@ public class ChangeHandlerTest extends TestCase {
         assertEquals(gson.toJson(changesResponse), gson.toJson(response));
     }
 
-    public void test_getChangesCount() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_getChangesCount() throws IOException, TeleflowNetworkException, InterruptedException {
         ChangeCountResponse changeCountResponse = new ChangeCountResponse();
         changeCountResponse.setData(1);
 
@@ -70,7 +70,7 @@ public class ChangeHandlerTest extends TestCase {
         assertEquals(gson.toJson(changeCountResponse), gson.toJson(response));
     }
 
-    public void test_applyChanges() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_applyChanges() throws IOException, TeleflowNetworkException, InterruptedException {
         ApplyChangesRequest changesRequest = new ApplyChangesRequest();
         changesRequest.setChangeIds(Collections.singletonList(new Object()));
 
@@ -87,7 +87,7 @@ public class ChangeHandlerTest extends TestCase {
         assertEquals(gson.toJson(changesResponse), gson.toJson(response));
     }
 
-    public void test_applyChange() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_applyChange() throws IOException, TeleflowNetworkException, InterruptedException {
         ApplyChangesResponse changesResponse = new ApplyChangesResponse();
         changesResponse.setData(Collections.singletonList(new ChangesData()));
 

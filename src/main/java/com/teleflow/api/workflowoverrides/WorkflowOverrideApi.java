@@ -1,10 +1,10 @@
-package co.novu.api.workflowoverrides;
+package com.teleflow.api.workflowoverrides;
 
-import co.novu.api.workflowoverrides.request.CreateWorkflowOverrideRequest;
-import co.novu.api.workflowoverrides.request.UpdateWorkflowOverrideRequest;
-import co.novu.api.workflowoverrides.response.BulkWorkflowOverridesResponse;
-import co.novu.api.workflowoverrides.response.DeleteWorkflowOverrideResponse;
-import co.novu.api.workflowoverrides.response.WorkflowOverrideResponse;
+import com.teleflow.api.workflowoverrides.request.CreateWorkflowOverrideRequest;
+import com.teleflow.api.workflowoverrides.request.UpdateWorkflowOverrideRequest;
+import com.teleflow.api.workflowoverrides.response.BulkWorkflowOverridesResponse;
+import com.teleflow.api.workflowoverrides.response.DeleteWorkflowOverrideResponse;
+import com.teleflow.api.workflowoverrides.response.WorkflowOverrideResponse;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;

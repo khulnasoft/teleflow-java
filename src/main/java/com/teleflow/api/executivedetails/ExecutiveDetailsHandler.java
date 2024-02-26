@@ -1,12 +1,12 @@
-package co.novu.api.executivedetails;
+package com.teleflow.api.executivedetails;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import co.novu.api.executivedetails.responses.ExecutiveDetailsResponse;
-import co.novu.common.rest.NovuNetworkException;
-import co.novu.common.rest.RestHandler;
+import com.teleflow.api.executivedetails.responses.ExecutiveDetailsResponse;
+import com.teleflow.common.rest.TeleflowNetworkException;
+import com.teleflow.common.rest.RestHandler;
 import retrofit2.Response;
 
 
@@ -21,7 +21,7 @@ public class ExecutiveDetailsHandler {
         this.executiveDetailsApi = restHandler.buildRetrofit().create(ExecutiveDetailsApi.class);
     }
     
-    public ExecutiveDetailsResponse getExecutionDetails(String notificationId, String subscriberId) throws IOException, NovuNetworkException {
+    public ExecutiveDetailsResponse getExecutionDetails(String notificationId, String subscriberId) throws IOException, TeleflowNetworkException {
     	Map<String, Object> params = new HashMap<>();
         params.put("notificationId", notificationId);
         params.put("subscriberId", subscriberId);

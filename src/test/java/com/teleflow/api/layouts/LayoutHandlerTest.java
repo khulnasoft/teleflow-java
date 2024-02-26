@@ -1,17 +1,17 @@
-package co.novu.api.layouts;
+package com.teleflow.api.layouts;
 
-import co.novu.api.layouts.requests.FilterLayoutRequest;
-import co.novu.api.layouts.requests.LayoutRequest;
-import co.novu.api.layouts.responses.CreateLayoutResponse;
-import co.novu.api.layouts.responses.CreateLayoutResponseData;
-import co.novu.api.layouts.responses.DeleteLayoutResponse;
-import co.novu.api.layouts.responses.FilterLayoutResponse;
-import co.novu.api.layouts.responses.GetLayoutResponse;
-import co.novu.api.layouts.responses.LayoutResponse;
-import co.novu.api.layouts.responses.SetDefaultLayoutResponse;
-import co.novu.common.base.NovuConfig;
-import co.novu.common.rest.NovuNetworkException;
-import co.novu.common.rest.RestHandler;
+import com.teleflow.api.layouts.requests.FilterLayoutRequest;
+import com.teleflow.api.layouts.requests.LayoutRequest;
+import com.teleflow.api.layouts.responses.CreateLayoutResponse;
+import com.teleflow.api.layouts.responses.CreateLayoutResponseData;
+import com.teleflow.api.layouts.responses.DeleteLayoutResponse;
+import com.teleflow.api.layouts.responses.FilterLayoutResponse;
+import com.teleflow.api.layouts.responses.GetLayoutResponse;
+import com.teleflow.api.layouts.responses.LayoutResponse;
+import com.teleflow.api.layouts.responses.SetDefaultLayoutResponse;
+import com.teleflow.common.base.TeleflowConfig;
+import com.teleflow.common.rest.TeleflowNetworkException;
+import com.teleflow.common.rest.RestHandler;
 import com.google.gson.Gson;
 import junit.framework.TestCase;
 
@@ -33,13 +33,13 @@ public class LayoutHandlerTest extends TestCase {
     @Override
     protected void setUp() {
         mockWebServer = new MockWebServer();
-        NovuConfig novuConfig = new NovuConfig("1234");
-        novuConfig.setBaseUrl(mockWebServer.url("").toString());
-        RestHandler restHandler = new RestHandler(novuConfig);
+        TeleflowConfig teleflowConfig = new TeleflowConfig("1234");
+        teleflowConfig.setBaseUrl(mockWebServer.url("").toString());
+        RestHandler restHandler = new RestHandler(teleflowConfig);
         layoutHandler = new LayoutHandler(restHandler);
     }
 
-    public void test_createLayout() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_createLayout() throws IOException, TeleflowNetworkException, InterruptedException {
         LayoutRequest layoutRequest = new LayoutRequest();
         layoutRequest.setName("name");
         layoutRequest.setContent("content");
@@ -61,7 +61,7 @@ public class LayoutHandlerTest extends TestCase {
         assertEquals(gson.toJson(createLayoutResponse), gson.toJson(response));
     }
 
-    public void test_filterLayoutsNoParams() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_filterLayoutsNoParams() throws IOException, TeleflowNetworkException, InterruptedException {
         FilterLayoutRequest filterLayoutRequest = new FilterLayoutRequest();
         Gson gson = new Gson();
         mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(gson.toJson(new FilterLayoutResponse())));
@@ -72,7 +72,7 @@ public class LayoutHandlerTest extends TestCase {
         assertEquals("GET", request.getMethod());
     }
 
-    public void test_filterLayoutsWithParams() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_filterLayoutsWithParams() throws IOException, TeleflowNetworkException, InterruptedException {
         FilterLayoutRequest filterLayoutRequest = new FilterLayoutRequest();
         filterLayoutRequest.setPage(1);
         filterLayoutRequest.setPageSize(10);
@@ -95,7 +95,7 @@ public class LayoutHandlerTest extends TestCase {
         assertEquals(gson.toJson(filterLayoutResponse), gson.toJson(response));
     }
 
-    public void test_getLayout() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_getLayout() throws IOException, TeleflowNetworkException, InterruptedException {
         FilterLayoutRequest filterLayoutRequest = new FilterLayoutRequest();
         filterLayoutRequest.setPage(1);
         filterLayoutRequest.setPageSize(10);
@@ -118,7 +118,7 @@ public class LayoutHandlerTest extends TestCase {
 
     public void test_deleteLayoutFailure() throws InterruptedException {
         mockWebServer.enqueue(new MockResponse().setResponseCode(400).setBody("{}"));
-        NovuNetworkException networkException = assertThrows(NovuNetworkException.class,
+        TeleflowNetworkException networkException = assertThrows(TeleflowNetworkException.class,
                 () -> layoutHandler.deleteLayout("bat-123"));
 
         RecordedRequest request = mockWebServer.takeRequest();
@@ -126,7 +126,7 @@ public class LayoutHandlerTest extends TestCase {
         assertEquals("DELETE", request.getMethod());
     }
 
-    public void test_deleteLayoutSuccess() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_deleteLayoutSuccess() throws IOException, TeleflowNetworkException, InterruptedException {
         mockWebServer.enqueue(new MockResponse().setResponseCode(201).setBody("{}"));
         DeleteLayoutResponse response = layoutHandler.deleteLayout("bat-123");
         RecordedRequest request = mockWebServer.takeRequest();
@@ -135,7 +135,7 @@ public class LayoutHandlerTest extends TestCase {
         assertTrue(response.getAcknowledged());
     }
 
-    public void test_updateLayout() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_updateLayout() throws IOException, TeleflowNetworkException, InterruptedException {
         LayoutRequest layoutRequest = new LayoutRequest();
         layoutRequest.setName("name");
         layoutRequest.setContent("content");
@@ -160,7 +160,7 @@ public class LayoutHandlerTest extends TestCase {
 
     public void test_setDefaultLayoutFailure() throws InterruptedException {
         mockWebServer.enqueue(new MockResponse().setResponseCode(400).setBody("{}"));
-        NovuNetworkException networkException = assertThrows(NovuNetworkException.class,
+        TeleflowNetworkException networkException = assertThrows(TeleflowNetworkException.class,
                 () -> layoutHandler.setDefaultLayout("bat-123"));
 
         RecordedRequest request = mockWebServer.takeRequest();
@@ -168,7 +168,7 @@ public class LayoutHandlerTest extends TestCase {
         assertEquals("POST", request.getMethod());
     }
 
-    public void test_setDefaultLayoutSuccess() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_setDefaultLayoutSuccess() throws IOException, TeleflowNetworkException, InterruptedException {
         mockWebServer.enqueue(new MockResponse().setResponseCode(201).setBody("{}"));
         SetDefaultLayoutResponse response = layoutHandler.setDefaultLayout("bat-123");
 

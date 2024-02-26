@@ -1,4 +1,4 @@
-package co.novu.api.blueprints.pojos;
+package com.teleflow.api.blueprints.pojos;
 
 import lombok.Data;
 

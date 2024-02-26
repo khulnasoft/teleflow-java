@@ -1,6 +1,6 @@
-package co.novu.api.workflowoverrides.request;
+package com.teleflow.api.workflowoverrides.request;
 
-import co.novu.api.common.PreferenceSettings;
+import com.teleflow.api.common.PreferenceSettings;
 
 import lombok.Data;
 

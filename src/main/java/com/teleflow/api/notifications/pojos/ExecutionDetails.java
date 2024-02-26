@@ -1,4 +1,4 @@
-package co.novu.api.notifications.pojos;
+package com.teleflow.api.notifications.pojos;
 
 import com.google.gson.annotations.SerializedName;
 

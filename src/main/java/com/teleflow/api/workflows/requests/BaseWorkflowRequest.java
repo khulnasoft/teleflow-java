@@ -1,8 +1,8 @@
-package co.novu.api.workflows.requests;
+package com.teleflow.api.workflows.requests;
 
-import co.novu.api.common.Step;
-import co.novu.api.common.PreferenceSettings;
-import co.novu.common.contracts.IRequest;
+import com.teleflow.api.common.Step;
+import com.teleflow.api.common.PreferenceSettings;
+import com.teleflow.common.contracts.IRequest;
 import lombok.Data;
 
 import java.util.List;

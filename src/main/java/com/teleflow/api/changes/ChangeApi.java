@@ -1,9 +1,9 @@
-package co.novu.api.changes;
+package com.teleflow.api.changes;
 
-import co.novu.api.changes.request.ApplyChangesRequest;
-import co.novu.api.changes.responses.ApplyChangesResponse;
-import co.novu.api.changes.responses.ChangeCountResponse;
-import co.novu.api.changes.responses.GetChangesResponse;
+import com.teleflow.api.changes.request.ApplyChangesRequest;
+import com.teleflow.api.changes.responses.ApplyChangesResponse;
+import com.teleflow.api.changes.responses.ChangeCountResponse;
+import com.teleflow.api.changes.responses.GetChangesResponse;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;

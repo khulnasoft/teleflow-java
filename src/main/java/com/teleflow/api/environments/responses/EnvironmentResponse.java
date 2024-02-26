@@ -1,7 +1,7 @@
-package co.novu.api.environments.responses;
+package com.teleflow.api.environments.responses;
 
-import co.novu.api.environments.pojos.ApiKey;
-import co.novu.api.environments.pojos.Widget;
+import com.teleflow.api.environments.pojos.ApiKey;
+import com.teleflow.api.environments.pojos.Widget;
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 

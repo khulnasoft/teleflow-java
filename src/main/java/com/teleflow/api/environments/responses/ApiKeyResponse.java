@@ -1,6 +1,6 @@
-package co.novu.api.environments.responses;
+package com.teleflow.api.environments.responses;
 
-import co.novu.api.environments.pojos.ApiKey;
+import com.teleflow.api.environments.pojos.ApiKey;
 import lombok.Data;
 
 import java.util.List;

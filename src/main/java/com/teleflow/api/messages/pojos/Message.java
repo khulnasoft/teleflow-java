@@ -1,11 +1,11 @@
-package co.novu.api.messages.pojos;
+package com.teleflow.api.messages.pojos;
 
 import java.util.List;
 
 
-import co.novu.api.common.Template;
-import co.novu.api.notifications.pojos.Job;
-import co.novu.api.notifications.pojos.Subscriber;
+import com.teleflow.api.common.Template;
+import com.teleflow.api.notifications.pojos.Job;
+import com.teleflow.api.notifications.pojos.Subscriber;
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 

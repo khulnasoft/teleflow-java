@@ -1,4 +1,4 @@
-package co.novu.api.organizations.pojos;
+package com.teleflow.api.organizations.pojos;
 
 import lombok.Data;
 

@@ -1,13 +1,13 @@
-package co.novu.api.workflowgroups;
+package com.teleflow.api.workflowgroups;
 
 import java.io.IOException;
 
-import co.novu.api.workflowgroups.request.WorkflowGroupRequest;
-import co.novu.api.workflowgroups.responses.DeleteWorkflowGroup;
-import co.novu.api.workflowgroups.responses.GetWorkflowGroupsResponse;
-import co.novu.api.workflowgroups.responses.WorkflowGroupResponse;
-import co.novu.common.rest.NovuNetworkException;
-import co.novu.common.rest.RestHandler;
+import com.teleflow.api.workflowgroups.request.WorkflowGroupRequest;
+import com.teleflow.api.workflowgroups.responses.DeleteWorkflowGroup;
+import com.teleflow.api.workflowgroups.responses.GetWorkflowGroupsResponse;
+import com.teleflow.api.workflowgroups.responses.WorkflowGroupResponse;
+import com.teleflow.common.rest.TeleflowNetworkException;
+import com.teleflow.common.rest.RestHandler;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -23,23 +23,23 @@ public class WorkflowGroupHandler {
     }
 
 
-    public WorkflowGroupResponse createWorkflowGroup(WorkflowGroupRequest request) throws NovuNetworkException, IOException {
+    public WorkflowGroupResponse createWorkflowGroup(WorkflowGroupRequest request) throws TeleflowNetworkException, IOException {
         return restHandler.extractResponse(this.workflowGroupApi.createWorkflowGroup(request).execute());
     }
 
-    public GetWorkflowGroupsResponse getWorkflowGroups() throws NovuNetworkException, IOException {
+    public GetWorkflowGroupsResponse getWorkflowGroups() throws TeleflowNetworkException, IOException {
         return restHandler.extractResponse(this.workflowGroupApi.getWorkflowGroups().execute());
     }
 
-    public WorkflowGroupResponse getWorkflowGroup(String id) throws NovuNetworkException, IOException {
+    public WorkflowGroupResponse getWorkflowGroup(String id) throws TeleflowNetworkException, IOException {
         return restHandler.extractResponse(this.workflowGroupApi.getWorkflowGroup(id).execute());
     }
 
-    public WorkflowGroupResponse updateWorkflowGroup(String id, WorkflowGroupRequest request) throws NovuNetworkException, IOException {
+    public WorkflowGroupResponse updateWorkflowGroup(String id, WorkflowGroupRequest request) throws TeleflowNetworkException, IOException {
         return restHandler.extractResponse(this.workflowGroupApi.updateWorkflowGroup(id, request).execute());
     }
 
-    public DeleteWorkflowGroup deleteWorkflowGroup(String id) throws NovuNetworkException, IOException {
+    public DeleteWorkflowGroup deleteWorkflowGroup(String id) throws TeleflowNetworkException, IOException {
         return restHandler.extractResponse(this.workflowGroupApi.deleteWorkflowGroup(id).execute());
     }
 }

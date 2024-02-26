@@ -1,6 +1,6 @@
-package co.novu.common.rest;
+package com.teleflow.common.rest;
 
-import co.novu.common.base.NovuConfig;
+import com.teleflow.common.base.TeleflowConfig;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import lombok.RequiredArgsConstructor;
@@ -24,7 +24,7 @@ import java.io.InputStreamReader;
 @Slf4j
 public class RestHandler {
 
-    private final NovuConfig novuConfig;
+    private final TeleflowConfig teleflowConfig;
 
     private Retrofit retrofit;
 
@@ -37,8 +37,8 @@ public class RestHandler {
         clientBuilder.addInterceptor(chain -> {
                     Request request = chain.request()
                             .newBuilder()
-                            .addHeader("Authorization", "ApiKey " + novuConfig.getApiKey())
-                            .addHeader("User-Agent", "novu/Java@" + loadSdkVersionFromPom())
+                            .addHeader("Authorization", "ApiKey " + teleflowConfig.getApiKey())
+                            .addHeader("User-Agent", "teleflow/Java@" + loadSdkVersionFromPom())
                             .build();
                     return chain.proceed(request);
                 }).addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BASIC));
@@ -48,32 +48,32 @@ public class RestHandler {
                 .create();
 
         retrofit = new Retrofit.Builder()
-                .baseUrl(novuConfig.getBaseUrl())
+                .baseUrl(teleflowConfig.getBaseUrl())
                 .client(clientBuilder.build())
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
         return retrofit;
     }
 
-    public <T> T extractResponse(Response<T> response) throws NovuNetworkException, IOException {
+    public <T> T extractResponse(Response<T> response) throws TeleflowNetworkException, IOException {
         if (response.isSuccessful()) {
             return response.body();
         } else {
-            throw new NovuNetworkException(response.errorBody() != null ? response.errorBody().string() : "Error connecting to Novu API");
+            throw new TeleflowNetworkException(response.errorBody() != null ? response.errorBody().string() : "Error connecting to Teleflow API");
         }
     }
 
-    public <T, R> R extractResponse(Response<T> response, R body) throws NovuNetworkException, IOException {
+    public <T, R> R extractResponse(Response<T> response, R body) throws TeleflowNetworkException, IOException {
         if (response.isSuccessful()) {
             return body;
         } else {
-            throw new NovuNetworkException(response.errorBody() != null ? response.errorBody().string() : "Error connecting to Novu API");
+            throw new TeleflowNetworkException(response.errorBody() != null ? response.errorBody().string() : "Error connecting to Teleflow API");
         }
     }
 
     private String loadSdkVersionFromPom() {
         try {
-            InputStream inputStream = this.getClass().getResourceAsStream("/META-INF/maven/co.novu/novu-java/pom.xml");
+            InputStream inputStream = this.getClass().getResourceAsStream("/META-INF/maven/com.teleflow/teleflow-java/pom.xml");
             if (inputStream == null) {
                 return "";
             }

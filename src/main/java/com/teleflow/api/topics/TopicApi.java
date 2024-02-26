@@ -1,14 +1,14 @@
-package co.novu.api.topics;
+package com.teleflow.api.topics;
 
-import co.novu.api.topics.requests.RenameTopicRequest;
-import co.novu.api.topics.requests.SubscriberAdditionRequest;
-import co.novu.api.topics.requests.TopicRequest;
-import co.novu.api.topics.responses.CheckTopicSubscriberResponse;
-import co.novu.api.topics.responses.DeleteTopicResponse;
-import co.novu.api.topics.responses.FilterTopicsResponse;
-import co.novu.api.topics.responses.SubscriberAdditionResponse;
-import co.novu.api.topics.responses.SubscriberRemovalResponse;
-import co.novu.api.topics.responses.TopicResponse;
+import com.teleflow.api.topics.requests.RenameTopicRequest;
+import com.teleflow.api.topics.requests.SubscriberAdditionRequest;
+import com.teleflow.api.topics.requests.TopicRequest;
+import com.teleflow.api.topics.responses.CheckTopicSubscriberResponse;
+import com.teleflow.api.topics.responses.DeleteTopicResponse;
+import com.teleflow.api.topics.responses.FilterTopicsResponse;
+import com.teleflow.api.topics.responses.SubscriberAdditionResponse;
+import com.teleflow.api.topics.responses.SubscriberRemovalResponse;
+import com.teleflow.api.topics.responses.TopicResponse;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;

@@ -1,15 +1,15 @@
-package co.novu.api.executivedetails;
+package com.teleflow.api.executivedetails;
 
 import java.io.IOException;
 import java.util.Collections;
 
 import com.google.gson.Gson;
 
-import co.novu.api.executivedetails.responses.ExecutiveDetailsResponse;
-import co.novu.api.notifications.pojos.ExecutionDetails;
-import co.novu.common.base.NovuConfig;
-import co.novu.common.rest.NovuNetworkException;
-import co.novu.common.rest.RestHandler;
+import com.teleflow.api.executivedetails.responses.ExecutiveDetailsResponse;
+import com.teleflow.api.notifications.pojos.ExecutionDetails;
+import com.teleflow.common.base.TeleflowConfig;
+import com.teleflow.common.rest.TeleflowNetworkException;
+import com.teleflow.common.rest.RestHandler;
 import junit.framework.TestCase;
 import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;
@@ -24,13 +24,13 @@ public class ExecutiveDetailsHandlerTest extends TestCase {
     @Override
     protected void setUp() {
     	mockWebServer = new MockWebServer();
-    	NovuConfig novuConfig = new NovuConfig("1234");
-    	novuConfig.setBaseUrl(mockWebServer.url("").toString());
-    	RestHandler restHandler = new RestHandler(novuConfig);
+    	TeleflowConfig teleflowConfig = new TeleflowConfig("1234");
+    	teleflowConfig.setBaseUrl(mockWebServer.url("").toString());
+    	RestHandler restHandler = new RestHandler(teleflowConfig);
     	executiveDetailsHandler = new ExecutiveDetailsHandler(restHandler);
     }
 
-    public void test_getExecutionDetails() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_getExecutionDetails() throws IOException, TeleflowNetworkException, InterruptedException {
         ExecutiveDetailsResponse executiveDetailsResponse = new ExecutiveDetailsResponse();
         ExecutionDetails executionDetails = new ExecutionDetails();
         executionDetails.setTransactionId("tId");

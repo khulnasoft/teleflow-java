@@ -1,15 +1,15 @@
-package co.novu.api.organizations;
+package com.teleflow.api.organizations;
 
-import co.novu.api.organizations.requests.CreateOrganizationRequest;
-import co.novu.api.organizations.requests.UpdateMemberRoleRequest;
-import co.novu.api.organizations.requests.UpdateOrganizationBrandRequest;
-import co.novu.api.organizations.requests.UpdateOrganizationNameRequest;
-import co.novu.api.organizations.responses.FetchMembersResponse;
-import co.novu.api.organizations.responses.UpdateOrganizationBrandResponse;
-import co.novu.api.organizations.responses.MemberResponse;
-import co.novu.api.organizations.responses.OrganizationResponse;
-import co.novu.api.organizations.responses.FetchOrganizationResponse;
-import co.novu.api.organizations.responses.UpdateOrganizationNameResponse;
+import com.teleflow.api.organizations.requests.CreateOrganizationRequest;
+import com.teleflow.api.organizations.requests.UpdateMemberRoleRequest;
+import com.teleflow.api.organizations.requests.UpdateOrganizationBrandRequest;
+import com.teleflow.api.organizations.requests.UpdateOrganizationNameRequest;
+import com.teleflow.api.organizations.responses.FetchMembersResponse;
+import com.teleflow.api.organizations.responses.UpdateOrganizationBrandResponse;
+import com.teleflow.api.organizations.responses.MemberResponse;
+import com.teleflow.api.organizations.responses.OrganizationResponse;
+import com.teleflow.api.organizations.responses.FetchOrganizationResponse;
+import com.teleflow.api.organizations.responses.UpdateOrganizationNameResponse;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;

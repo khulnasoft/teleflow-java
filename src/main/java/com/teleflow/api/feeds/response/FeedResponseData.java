@@ -1,4 +1,4 @@
-package co.novu.api.feeds.response;
+package com.teleflow.api.feeds.response;
 
 import com.google.gson.annotations.SerializedName;
 

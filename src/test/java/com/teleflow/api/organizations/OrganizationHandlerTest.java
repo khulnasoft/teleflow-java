@@ -1,27 +1,27 @@
-package co.novu.api.organizations;
+package com.teleflow.api.organizations;
 
 
 
-import co.novu.api.organizations.pojos.Branding;
-import co.novu.api.organizations.pojos.InviteDetails;
-import co.novu.api.organizations.pojos.PartnerConfigurations;
-import co.novu.api.organizations.pojos.UserDetails;
-import co.novu.api.organizations.requests.CreateOrganizationRequest;
-import co.novu.api.organizations.requests.UpdateMemberRoleRequest;
-import co.novu.api.organizations.requests.UpdateOrganizationBrandRequest;
-import co.novu.api.organizations.requests.UpdateOrganizationNameRequest;
-import co.novu.api.organizations.responses.FetchMembersResponse;
-import co.novu.api.organizations.responses.UpdateOrganizationBrandResponse;
-import co.novu.api.organizations.responses.MemberResponse;
-import co.novu.api.organizations.responses.OrganizationResponseData;
-import co.novu.api.organizations.responses.UpdateOrganizationNameResponseData;
-import co.novu.api.organizations.responses.MemberResponseData;
-import co.novu.api.organizations.responses.OrganizationResponse;
-import co.novu.api.organizations.responses.FetchOrganizationResponse;
-import co.novu.api.organizations.responses.UpdateOrganizationNameResponse;
-import co.novu.common.base.NovuConfig;
-import co.novu.common.rest.NovuNetworkException;
-import co.novu.common.rest.RestHandler;
+import com.teleflow.api.organizations.pojos.Branding;
+import com.teleflow.api.organizations.pojos.InviteDetails;
+import com.teleflow.api.organizations.pojos.PartnerConfigurations;
+import com.teleflow.api.organizations.pojos.UserDetails;
+import com.teleflow.api.organizations.requests.CreateOrganizationRequest;
+import com.teleflow.api.organizations.requests.UpdateMemberRoleRequest;
+import com.teleflow.api.organizations.requests.UpdateOrganizationBrandRequest;
+import com.teleflow.api.organizations.requests.UpdateOrganizationNameRequest;
+import com.teleflow.api.organizations.responses.FetchMembersResponse;
+import com.teleflow.api.organizations.responses.UpdateOrganizationBrandResponse;
+import com.teleflow.api.organizations.responses.MemberResponse;
+import com.teleflow.api.organizations.responses.OrganizationResponseData;
+import com.teleflow.api.organizations.responses.UpdateOrganizationNameResponseData;
+import com.teleflow.api.organizations.responses.MemberResponseData;
+import com.teleflow.api.organizations.responses.OrganizationResponse;
+import com.teleflow.api.organizations.responses.FetchOrganizationResponse;
+import com.teleflow.api.organizations.responses.UpdateOrganizationNameResponse;
+import com.teleflow.common.base.TeleflowConfig;
+import com.teleflow.common.rest.TeleflowNetworkException;
+import com.teleflow.common.rest.RestHandler;
 import com.google.gson.Gson;
 import junit.framework.TestCase;
 import okhttp3.mockwebserver.MockResponse;
@@ -44,12 +44,12 @@ public class OrganizationHandlerTest extends TestCase {
     @Override
     protected void setUp() {
         mockWebServer = new MockWebServer();
-        NovuConfig novuConfig = new NovuConfig("1234");
-        novuConfig.setBaseUrl(mockWebServer.url("").toString());
-        RestHandler restHandler = new RestHandler(novuConfig);
+        TeleflowConfig teleflowConfig = new TeleflowConfig("1234");
+        teleflowConfig.setBaseUrl(mockWebServer.url("").toString());
+        RestHandler restHandler = new RestHandler(teleflowConfig);
         organizationHandler = new OrganizationHandler(restHandler);    }
 
-    public void test_createOrganization() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_createOrganization() throws IOException, TeleflowNetworkException, InterruptedException {
         CreateOrganizationRequest request = new CreateOrganizationRequest();
         request.setName("name");
         request.setLogo("logo");
@@ -90,7 +90,7 @@ public class OrganizationHandlerTest extends TestCase {
         assertEquals(organizationResponse, response);
     }
 
-    public void test_fetchAllOrganizations() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_fetchAllOrganizations() throws IOException, TeleflowNetworkException, InterruptedException {
         FetchOrganizationResponse fetchOrganizationResponse = new FetchOrganizationResponse();
         OrganizationResponseData data = new OrganizationResponseData();
         data.setId("id");
@@ -125,7 +125,7 @@ public class OrganizationHandlerTest extends TestCase {
         assertEquals(fetchOrganizationResponse, response);
     }
 
-    public void test_updateOrganizationName() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_updateOrganizationName() throws IOException, TeleflowNetworkException, InterruptedException {
         UpdateOrganizationNameRequest updateOrganizationNameRequest = new UpdateOrganizationNameRequest();
         updateOrganizationNameRequest.setName("name");
 
@@ -143,7 +143,7 @@ public class OrganizationHandlerTest extends TestCase {
         assertEquals(updateOrganizationNameResponse, response);
     }
 
-    public void test_fetchCurrentOrganization() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_fetchCurrentOrganization() throws IOException, TeleflowNetworkException, InterruptedException {
         OrganizationResponse organizationResponse = new OrganizationResponse();
         OrganizationResponseData data = new OrganizationResponseData();
         data.setId("id");
@@ -179,7 +179,7 @@ public class OrganizationHandlerTest extends TestCase {
         assertEquals(organizationResponse, response);
     }
 
-    public void test_removeMemberWithId() throws IOException, NovuNetworkException, InterruptedException{
+    public void test_removeMemberWithId() throws IOException, TeleflowNetworkException, InterruptedException{
         MemberResponse memberResponse = new MemberResponse();
         MemberResponseData data = new MemberResponseData();
         data.setId("id");
@@ -212,7 +212,7 @@ public class OrganizationHandlerTest extends TestCase {
         assertEquals(memberResponse, response);
     }
 
-    public void test_updateMemberRole() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_updateMemberRole() throws IOException, TeleflowNetworkException, InterruptedException {
         UpdateMemberRoleRequest memberRoleRequest = new UpdateMemberRoleRequest();
         memberRoleRequest.setRole("admin");
 
@@ -248,7 +248,7 @@ public class OrganizationHandlerTest extends TestCase {
         assertEquals(memberResponse, response);
     }
 
-    public void test_fetchMembersOfOrganization()throws IOException, NovuNetworkException, InterruptedException {
+    public void test_fetchMembersOfOrganization()throws IOException, TeleflowNetworkException, InterruptedException {
         FetchMembersResponse membersResponse = new FetchMembersResponse();
         MemberResponseData data = new MemberResponseData();
         data.setId("id");
@@ -281,7 +281,7 @@ public class OrganizationHandlerTest extends TestCase {
         assertEquals(membersResponse, response);
     }
 
-    public void test_updateOrganizationBrand() throws IOException, NovuNetworkException, InterruptedException{
+    public void test_updateOrganizationBrand() throws IOException, TeleflowNetworkException, InterruptedException{
         UpdateOrganizationBrandRequest brandRequest = new UpdateOrganizationBrandRequest();
         brandRequest.setLogo("logo");
         brandRequest.setColor("color");

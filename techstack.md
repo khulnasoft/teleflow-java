@@ -1,7 +1,7 @@
 <!--
 &lt;--- Readme.md Snippet without images Start ---&gt;
 ## Tech Stack
-novuhq/novu-java is built on the following main stack:
+khulnasoft/teleflow-java is built on the following main stack:
 
 - [Java](https://www.java.com) – Languages
 - [JUnit](http://junit.org/) – Testing Frameworks
@@ -16,7 +16,7 @@ Full tech stack [here](/techstack.md)
 
 &lt;--- Readme.md Snippet with images Start ---&gt;
 ## Tech Stack
-novuhq/novu-java is built on the following main stack:
+khulnasoft/teleflow-java is built on the following main stack:
 
 - <img width='25' height='25' src='https://img.stackshare.io/service/995/K85ZWV2F.png' alt='Java'/> [Java](https://www.java.com) – Languages
 - <img width='25' height='25' src='https://img.stackshare.io/service/2020/874086.png' alt='JUnit'/> [JUnit](http://junit.org/) – Testing Frameworks
@@ -32,7 +32,7 @@ Full tech stack [here](/techstack.md)
 <div align="center">
 
 # Tech Stack File
-![](https://img.stackshare.io/repo.svg "repo") [novuhq/novu-java](https://github.com/novuhq/novu-java)![](https://img.stackshare.io/public_badge.svg "public")
+![](https://img.stackshare.io/repo.svg "repo") [khulnasoft/teleflow-java](https://github.com/khulnasoft/teleflow-java)![](https://img.stackshare.io/public_badge.svg "public")
 <br/><br/>
 |16<br/>Tools used|12/14/23 <br/>Report generated|
 |------|------|

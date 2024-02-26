@@ -1,7 +1,7 @@
-package co.novu.api.organizations.responses;
+package com.teleflow.api.organizations.responses;
 
-import co.novu.api.organizations.pojos.Branding;
-import co.novu.api.organizations.pojos.PartnerConfigurations;
+import com.teleflow.api.organizations.pojos.Branding;
+import com.teleflow.api.organizations.pojos.PartnerConfigurations;
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 

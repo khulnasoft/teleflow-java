@@ -1,6 +1,6 @@
-package co.novu.api.workflowoverrides.pojos;
+package com.teleflow.api.workflowoverrides.pojos;
 
-import co.novu.api.common.PreferenceSettings;
+import com.teleflow.api.common.PreferenceSettings;
 
 import com.google.gson.annotations.SerializedName;
 

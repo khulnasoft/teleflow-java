@@ -1,6 +1,6 @@
-package co.novu.api.subscribers.pojos;
+package com.teleflow.api.subscribers.pojos;
 
-import co.novu.api.common.Template;
+import com.teleflow.api.common.Template;
 import lombok.Data;
 
 @Data

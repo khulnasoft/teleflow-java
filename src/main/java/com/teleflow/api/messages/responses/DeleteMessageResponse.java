@@ -1,4 +1,4 @@
-package co.novu.api.messages.responses;
+package com.teleflow.api.messages.responses;
 
 import lombok.Data;
 

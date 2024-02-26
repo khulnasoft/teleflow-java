@@ -1,6 +1,6 @@
-package co.novu.api.workflowgroups.request;
+package com.teleflow.api.workflowgroups.request;
 
-import co.novu.common.contracts.IRequest;
+import com.teleflow.common.contracts.IRequest;
 import lombok.Data;
 
 @Data

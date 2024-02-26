@@ -1,6 +1,6 @@
-package co.novu.api.changes.request;
+package com.teleflow.api.changes.request;
 
-import co.novu.common.contracts.IRequest;
+import com.teleflow.common.contracts.IRequest;
 import lombok.Data;
 
 @Data

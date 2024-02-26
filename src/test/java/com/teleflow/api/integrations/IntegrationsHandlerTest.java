@@ -1,18 +1,18 @@
-package co.novu.api.integrations;
+package com.teleflow.api.integrations;
 
 import java.io.IOException;
 import java.util.Collections;
 
 import com.google.gson.Gson;
 
-import co.novu.api.integrations.pojo.Integration;
-import co.novu.api.integrations.requests.IntegrationRequest;
-import co.novu.api.integrations.responses.BulkIntegrationResponse;
-import co.novu.api.integrations.responses.ProviderWebhookStatusResponse;
-import co.novu.api.integrations.responses.SingleIntegrationResponse;
-import co.novu.common.base.NovuConfig;
-import co.novu.common.rest.NovuNetworkException;
-import co.novu.common.rest.RestHandler;
+import com.teleflow.api.integrations.pojo.Integration;
+import com.teleflow.api.integrations.requests.IntegrationRequest;
+import com.teleflow.api.integrations.responses.BulkIntegrationResponse;
+import com.teleflow.api.integrations.responses.ProviderWebhookStatusResponse;
+import com.teleflow.api.integrations.responses.SingleIntegrationResponse;
+import com.teleflow.common.base.TeleflowConfig;
+import com.teleflow.common.rest.TeleflowNetworkException;
+import com.teleflow.common.rest.RestHandler;
 import junit.framework.TestCase;
 import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;
@@ -27,13 +27,13 @@ public class IntegrationsHandlerTest extends TestCase {
     @Override
     protected void setUp() {
         mockWebServer = new MockWebServer();
-        NovuConfig novuConfig = new NovuConfig("1234");
-        novuConfig.setBaseUrl(mockWebServer.url("").toString());
-        RestHandler restHandler = new RestHandler(novuConfig);
+        TeleflowConfig teleflowConfig = new TeleflowConfig("1234");
+        teleflowConfig.setBaseUrl(mockWebServer.url("").toString());
+        RestHandler restHandler = new RestHandler(teleflowConfig);
         integrationsHandler = new IntegrationsHandler(restHandler);
     }
 
-    public void test_getIntegrations() throws NovuNetworkException, IOException, InterruptedException {
+    public void test_getIntegrations() throws TeleflowNetworkException, IOException, InterruptedException {
         BulkIntegrationResponse bulkIntegrationResponse = new BulkIntegrationResponse();
         Integration integration = new Integration();
         integration.setActive(true);
@@ -51,7 +51,7 @@ public class IntegrationsHandlerTest extends TestCase {
         assertEquals(gson.toJson(bulkIntegrationResponse), gson.toJson(response));
     }
 
-    public void test_createIntegration() throws NovuNetworkException, IOException, InterruptedException {
+    public void test_createIntegration() throws TeleflowNetworkException, IOException, InterruptedException {
         IntegrationRequest integrationRequest = new IntegrationRequest();
         integrationRequest.setActive(true);
         integrationRequest.setChannel("PUSH");
@@ -74,7 +74,7 @@ public class IntegrationsHandlerTest extends TestCase {
         assertEquals(gson.toJson(singleIntegrationResponse), gson.toJson(response));
     }
 
-    public void test_getActiveIntegrations() throws NovuNetworkException, IOException, InterruptedException {
+    public void test_getActiveIntegrations() throws TeleflowNetworkException, IOException, InterruptedException {
         BulkIntegrationResponse bulkIntegrationResponse = new BulkIntegrationResponse();
         Integration integration = new Integration();
         integration.setActive(true);
@@ -92,7 +92,7 @@ public class IntegrationsHandlerTest extends TestCase {
         assertEquals(gson.toJson(bulkIntegrationResponse), gson.toJson(response));
     }
 
-    public void test_getProviderWebhookStatus() throws NovuNetworkException, IOException, InterruptedException {
+    public void test_getProviderWebhookStatus() throws TeleflowNetworkException, IOException, InterruptedException {
         ProviderWebhookStatusResponse bulkIntegrationResponse = new ProviderWebhookStatusResponse();
         bulkIntegrationResponse.setData(false);
 
@@ -107,7 +107,7 @@ public class IntegrationsHandlerTest extends TestCase {
         assertEquals(gson.toJson(bulkIntegrationResponse), gson.toJson(response));
     }
 
-    public void test_updateIntegration() throws NovuNetworkException, IOException, InterruptedException {
+    public void test_updateIntegration() throws TeleflowNetworkException, IOException, InterruptedException {
         IntegrationRequest integrationRequest = new IntegrationRequest();
         integrationRequest.setActive(true);
         integrationRequest.setChannel("PUSH");
@@ -130,7 +130,7 @@ public class IntegrationsHandlerTest extends TestCase {
         assertEquals(gson.toJson(singleIntegrationResponse), gson.toJson(response));
     }
 
-    public void test_deleteIntegration() throws NovuNetworkException, IOException, InterruptedException {
+    public void test_deleteIntegration() throws TeleflowNetworkException, IOException, InterruptedException {
         BulkIntegrationResponse bulkIntegrationResponse = new BulkIntegrationResponse();
         Integration integration = new Integration();
         integration.setActive(true);
@@ -149,7 +149,7 @@ public class IntegrationsHandlerTest extends TestCase {
         assertEquals(gson.toJson(bulkIntegrationResponse), gson.toJson(response));
     }
 
-    public void test_setIntegrationAsPrimary() throws NovuNetworkException, IOException, InterruptedException {
+    public void test_setIntegrationAsPrimary() throws TeleflowNetworkException, IOException, InterruptedException {
         SingleIntegrationResponse singleIntegrationResponse = new SingleIntegrationResponse();
         Integration integration = new Integration();
         integration.setActive(true);

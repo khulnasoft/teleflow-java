@@ -1,15 +1,15 @@
-package co.novu.api.notifications;
+package com.teleflow.api.notifications;
 
-import co.novu.api.layouts.LayoutApi;
-import co.novu.api.layouts.responses.CreateLayoutResponse;
-import co.novu.api.notifications.requests.NotificationRequest;
-import co.novu.api.notifications.responses.NotificationGraphStatsResponse;
-import co.novu.api.notifications.responses.NotificationResponse;
-import co.novu.api.notifications.responses.NotificationStatsResponse;
-import co.novu.api.notifications.responses.NotificationsResponse;
-import co.novu.common.base.NovuConfig;
-import co.novu.common.rest.NovuNetworkException;
-import co.novu.common.rest.RestHandler;
+import com.teleflow.api.layouts.LayoutApi;
+import com.teleflow.api.layouts.responses.CreateLayoutResponse;
+import com.teleflow.api.notifications.requests.NotificationRequest;
+import com.teleflow.api.notifications.responses.NotificationGraphStatsResponse;
+import com.teleflow.api.notifications.responses.NotificationResponse;
+import com.teleflow.api.notifications.responses.NotificationStatsResponse;
+import com.teleflow.api.notifications.responses.NotificationsResponse;
+import com.teleflow.common.base.TeleflowConfig;
+import com.teleflow.common.rest.TeleflowNetworkException;
+import com.teleflow.common.rest.RestHandler;
 import lombok.RequiredArgsConstructor;
 import retrofit2.Response;
 
@@ -28,7 +28,7 @@ public class NotificationHandler {
         this.notificationApi = restHandler.buildRetrofit().create(NotificationApi.class);
     }
 
-    public NotificationsResponse getNotifications(NotificationRequest request) throws IOException, NovuNetworkException {
+    public NotificationsResponse getNotifications(NotificationRequest request) throws IOException, TeleflowNetworkException {
         Map<String, Object> params = new HashMap<>();
         if (request.getChannels() != null) params.put("channels", request.getChannels());
         if (request.getTemplates() != null)params.put("templates", request.getTemplates());
@@ -39,15 +39,15 @@ public class NotificationHandler {
         return restHandler.extractResponse(notificationApi.getNotifications(params).execute());
     }
 
-    public NotificationStatsResponse getNotificationsStats() throws IOException, NovuNetworkException {
+    public NotificationStatsResponse getNotificationsStats() throws IOException, TeleflowNetworkException {
         return restHandler.extractResponse(notificationApi.getNotificationsStats().execute());
     }
 
-    public NotificationGraphStatsResponse getNotificationGraphStats() throws IOException, NovuNetworkException {
+    public NotificationGraphStatsResponse getNotificationGraphStats() throws IOException, TeleflowNetworkException {
         return restHandler.extractResponse(notificationApi.getNotificationGraphStats().execute());
     }
 
-    public NotificationResponse getNotification(String notificationId) throws IOException, NovuNetworkException {
+    public NotificationResponse getNotification(String notificationId) throws IOException, TeleflowNetworkException {
         return restHandler.extractResponse(notificationApi.getNotification(notificationId).execute());
     }
 }

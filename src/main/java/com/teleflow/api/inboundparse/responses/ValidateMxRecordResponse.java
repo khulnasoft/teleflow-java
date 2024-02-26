@@ -1,4 +1,4 @@
-package co.novu.api.inboundparse.responses;
+package com.teleflow.api.inboundparse.responses;
 
 import lombok.Data;
 

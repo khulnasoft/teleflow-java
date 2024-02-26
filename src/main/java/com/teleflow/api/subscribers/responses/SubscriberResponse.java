@@ -1,6 +1,6 @@
-package co.novu.api.subscribers.responses;
+package com.teleflow.api.subscribers.responses;
 
-import co.novu.api.subscribers.pojos.Channel;
+import com.teleflow.api.subscribers.pojos.Channel;
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 

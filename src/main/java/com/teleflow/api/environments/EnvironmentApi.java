@@ -1,10 +1,10 @@
-package co.novu.api.environments;
+package com.teleflow.api.environments;
 
-import co.novu.api.environments.requests.CreateEnvironmentRequest;
-import co.novu.api.environments.requests.UpdateEnvironmentRequest;
-import co.novu.api.environments.responses.ApiKeyResponse;
-import co.novu.api.environments.responses.BulkEnvironmentResponse;
-import co.novu.api.environments.responses.SingleEnvironmentResponse;
+import com.teleflow.api.environments.requests.CreateEnvironmentRequest;
+import com.teleflow.api.environments.requests.UpdateEnvironmentRequest;
+import com.teleflow.api.environments.responses.ApiKeyResponse;
+import com.teleflow.api.environments.responses.BulkEnvironmentResponse;
+import com.teleflow.api.environments.responses.SingleEnvironmentResponse;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;

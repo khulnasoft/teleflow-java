@@ -8,7 +8,7 @@
 	<version>1.5.0</version>
 	<packaging>jar</packaging>
 	<name>${project.groupId}:${project.artifactId}</name>
-	<description>Java SDK for Novu - The open-source notification infrastructure for developers</description>
+	<description>Java SDK for Teleflow - The open-source notification infrastructure for developers</description>
 	<url>https://github.com/khulnasoft/teleflow-java</url>
 
 	<licenses>
@@ -23,7 +23,7 @@
 			<id>unicodeveloper</id>
 			<name>Prosper Otemuyiwa</name>
 			<email>prosper@teleflow.co</email>
-			<organization>Novu</organization>
+			<organization>Teleflow</organization>
 			<organizationUrl>https://teleflow.co</organizationUrl>
 		</developer>
 		<developer>

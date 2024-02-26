@@ -1,9 +1,9 @@
-package co.novu.api.notifications;
+package com.teleflow.api.notifications;
 
-import co.novu.api.notifications.responses.NotificationGraphStatsResponse;
-import co.novu.api.notifications.responses.NotificationResponse;
-import co.novu.api.notifications.responses.NotificationStatsResponse;
-import co.novu.api.notifications.responses.NotificationsResponse;
+import com.teleflow.api.notifications.responses.NotificationGraphStatsResponse;
+import com.teleflow.api.notifications.responses.NotificationResponse;
+import com.teleflow.api.notifications.responses.NotificationStatsResponse;
+import com.teleflow.api.notifications.responses.NotificationsResponse;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;

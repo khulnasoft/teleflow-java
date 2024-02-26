@@ -1,7 +1,7 @@
-package co.novu.api.environments.requests;
+package com.teleflow.api.environments.requests;
 
-import co.novu.api.environments.pojos.Dns;
-import co.novu.common.contracts.IRequest;
+import com.teleflow.api.environments.pojos.Dns;
+import com.teleflow.common.contracts.IRequest;
 import lombok.Data;
 
 @Data

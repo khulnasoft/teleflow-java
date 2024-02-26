@@ -1,10 +1,10 @@
-package co.novu.api.events;
+package com.teleflow.api.events;
 
-import co.novu.api.events.pojos.BulkTriggerEventRequest;
-import co.novu.api.events.requests.TriggerEventRequest;
-import co.novu.api.events.responses.BulkTriggerEventResponse;
-import co.novu.api.events.responses.CancelEventResponse;
-import co.novu.api.events.responses.TriggerEventResponse;
+import com.teleflow.api.events.pojos.BulkTriggerEventRequest;
+import com.teleflow.api.events.requests.TriggerEventRequest;
+import com.teleflow.api.events.responses.BulkTriggerEventResponse;
+import com.teleflow.api.events.responses.CancelEventResponse;
+import com.teleflow.api.events.responses.TriggerEventResponse;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;

@@ -1,6 +1,6 @@
-package co.novu.api.tenants.responses;
+package com.teleflow.api.tenants.responses;
 
-import co.novu.api.tenants.pojos.Tenant;
+import com.teleflow.api.tenants.pojos.Tenant;
 import lombok.Data;
 
 @Data

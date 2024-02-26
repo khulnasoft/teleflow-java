@@ -1,12 +1,12 @@
-package co.novu.api.changes;
+package com.teleflow.api.changes;
 
-import co.novu.api.changes.request.ApplyChangesRequest;
-import co.novu.api.changes.request.GetChangesRequest;
-import co.novu.api.changes.responses.ApplyChangesResponse;
-import co.novu.api.changes.responses.ChangeCountResponse;
-import co.novu.api.changes.responses.GetChangesResponse;
-import co.novu.common.rest.NovuNetworkException;
-import co.novu.common.rest.RestHandler;
+import com.teleflow.api.changes.request.ApplyChangesRequest;
+import com.teleflow.api.changes.request.GetChangesRequest;
+import com.teleflow.api.changes.responses.ApplyChangesResponse;
+import com.teleflow.api.changes.responses.ChangeCountResponse;
+import com.teleflow.api.changes.responses.GetChangesResponse;
+import com.teleflow.common.rest.TeleflowNetworkException;
+import com.teleflow.common.rest.RestHandler;
 import lombok.RequiredArgsConstructor;
 import retrofit2.Response;
 
@@ -29,7 +29,7 @@ public class ChangeHandler {
     }
 
 
-    public GetChangesResponse getChanges(GetChangesRequest request) throws IOException, NovuNetworkException {
+    public GetChangesResponse getChanges(GetChangesRequest request) throws IOException, TeleflowNetworkException {
         Map<String, Object> params = new HashMap<>();
         if (request.getPage() != null) params.put("page", request.getPage());
         if (request.getLimit() != null) params.put("limit", request.getLimit());
@@ -38,17 +38,17 @@ public class ChangeHandler {
         return restHandler.extractResponse(response);
     }
 
-    public ChangeCountResponse getChangesCount() throws IOException, NovuNetworkException {
+    public ChangeCountResponse getChangesCount() throws IOException, TeleflowNetworkException {
         Response<ChangeCountResponse> response = changeApi.getChangesCount().execute();
         return restHandler.extractResponse(response);
     }
 
-    public ApplyChangesResponse applyChanges(ApplyChangesRequest request) throws IOException, NovuNetworkException {
+    public ApplyChangesResponse applyChanges(ApplyChangesRequest request) throws IOException, TeleflowNetworkException {
         Response<ApplyChangesResponse> response = changeApi.applyChanges(request).execute();
         return restHandler.extractResponse(response);
     }
 
-    public ApplyChangesResponse applyChange(String changeId) throws IOException, NovuNetworkException {
+    public ApplyChangesResponse applyChange(String changeId) throws IOException, TeleflowNetworkException {
         Response<ApplyChangesResponse> response = changeApi.applyChange(changeId).execute();
         return restHandler.extractResponse(response);
     }

@@ -1,6 +1,6 @@
-package co.novu.api.common;
+package com.teleflow.api.common;
 
-import co.novu.api.notifications.pojos.Variables;
+import com.teleflow.api.notifications.pojos.Variables;
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 

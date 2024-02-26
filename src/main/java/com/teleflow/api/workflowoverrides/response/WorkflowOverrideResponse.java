@@ -1,6 +1,6 @@
-package co.novu.api.workflowoverrides.response;
+package com.teleflow.api.workflowoverrides.response;
 
-import co.novu.api.workflowoverrides.pojos.WorkflowOverride;
+import com.teleflow.api.workflowoverrides.pojos.WorkflowOverride;
 
 import lombok.Data;
 

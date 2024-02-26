@@ -1,16 +1,16 @@
-package co.novu.api.events;
+package com.teleflow.api.events;
 
-import co.novu.api.common.SubscriberRequest;
-import co.novu.api.events.pojos.BulkTriggerEventRequest;
-import co.novu.api.events.requests.Topic;
-import co.novu.api.events.requests.TriggerEventRequest;
-import co.novu.api.events.responses.BulkTriggerEventResponse;
-import co.novu.api.events.responses.CancelEventResponse;
-import co.novu.api.events.responses.TriggerEventResponse;
-import co.novu.api.events.responses.TriggerEventResponseData;
-import co.novu.common.base.NovuConfig;
-import co.novu.common.rest.NovuNetworkException;
-import co.novu.common.rest.RestHandler;
+import com.teleflow.api.common.SubscriberRequest;
+import com.teleflow.api.events.pojos.BulkTriggerEventRequest;
+import com.teleflow.api.events.requests.Topic;
+import com.teleflow.api.events.requests.TriggerEventRequest;
+import com.teleflow.api.events.responses.BulkTriggerEventResponse;
+import com.teleflow.api.events.responses.CancelEventResponse;
+import com.teleflow.api.events.responses.TriggerEventResponse;
+import com.teleflow.api.events.responses.TriggerEventResponseData;
+import com.teleflow.common.base.TeleflowConfig;
+import com.teleflow.common.rest.TeleflowNetworkException;
+import com.teleflow.common.rest.RestHandler;
 import com.google.gson.Gson;
 import junit.framework.TestCase;
 import okhttp3.mockwebserver.MockResponse;
@@ -29,13 +29,13 @@ public class EventsHandlerTest extends TestCase {
     @Override
     protected void setUp() {
         mockWebServer = new MockWebServer();
-        NovuConfig novuConfig = new NovuConfig("1234");
-        novuConfig.setBaseUrl(mockWebServer.url("").toString());
-        RestHandler restHandler = new RestHandler(novuConfig);
+        TeleflowConfig teleflowConfig = new TeleflowConfig("1234");
+        teleflowConfig.setBaseUrl(mockWebServer.url("").toString());
+        RestHandler restHandler = new RestHandler(teleflowConfig);
         eventsHandler = new EventsHandler(restHandler);
     }
 
-    public void test_triggerEventToSubscriber() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_triggerEventToSubscriber() throws IOException, TeleflowNetworkException, InterruptedException {
         TriggerEventRequest triggerEventRequest = new TriggerEventRequest();
         triggerEventRequest.setName("name");
 
@@ -66,7 +66,7 @@ public class EventsHandlerTest extends TestCase {
         assertEquals(gson.toJson(triggerEventResponse), gson.toJson(response));
     }
 
-    public void test_triggerEventToTopic() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_triggerEventToTopic() throws IOException, TeleflowNetworkException, InterruptedException {
         TriggerEventRequest triggerEventRequest = new TriggerEventRequest();
         triggerEventRequest.setName("name");
 
@@ -95,7 +95,7 @@ public class EventsHandlerTest extends TestCase {
         assertEquals(gson.toJson(triggerEventResponse), gson.toJson(response));
     }
 
-    public void test_bulkTriggerEventToSubscriber() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_bulkTriggerEventToSubscriber() throws IOException, TeleflowNetworkException, InterruptedException {
         BulkTriggerEventRequest bulkTriggerEventRequest = new BulkTriggerEventRequest();
 
         TriggerEventRequest triggerEventRequest = new TriggerEventRequest();
@@ -131,7 +131,7 @@ public class EventsHandlerTest extends TestCase {
         assertEquals(gson.toJson(bulkTriggerEventResponse), gson.toJson(response));
     }
 
-    public void test_broadcastEventToSubscriber() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_broadcastEventToSubscriber() throws IOException, TeleflowNetworkException, InterruptedException {
         TriggerEventRequest triggerEventRequest = new TriggerEventRequest();
         triggerEventRequest.setName("name");
 
@@ -162,7 +162,7 @@ public class EventsHandlerTest extends TestCase {
         assertEquals(gson.toJson(triggerEventResponse), gson.toJson(response));
     }
 
-    public void test_cancelTriggeredEvent() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_cancelTriggeredEvent() throws IOException, TeleflowNetworkException, InterruptedException {
         CancelEventResponse cancelEventResponse = new CancelEventResponse();
         cancelEventResponse.setData(true);
 

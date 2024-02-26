@@ -1,9 +1,9 @@
-package co.novu.api.blueprints.pojos;
+package com.teleflow.api.blueprints.pojos;
 
-import co.novu.api.common.PreferenceSettings;
-import co.novu.api.common.Step;
-import co.novu.api.common.Trigger;
-import co.novu.api.common.NotificationGroup;
+import com.teleflow.api.common.PreferenceSettings;
+import com.teleflow.api.common.Step;
+import com.teleflow.api.common.Trigger;
+import com.teleflow.api.common.NotificationGroup;
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 

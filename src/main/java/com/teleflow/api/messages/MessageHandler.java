@@ -1,14 +1,14 @@
-package co.novu.api.messages;
+package com.teleflow.api.messages;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import co.novu.api.messages.requests.MessageRequest;
-import co.novu.api.messages.responses.DeleteMessageResponse;
-import co.novu.api.messages.responses.MessageResponse;
-import co.novu.common.rest.NovuNetworkException;
-import co.novu.common.rest.RestHandler;
+import com.teleflow.api.messages.requests.MessageRequest;
+import com.teleflow.api.messages.responses.DeleteMessageResponse;
+import com.teleflow.api.messages.responses.MessageResponse;
+import com.teleflow.common.rest.TeleflowNetworkException;
+import com.teleflow.common.rest.RestHandler;
 import retrofit2.Response;
 
 public class MessageHandler {
@@ -22,7 +22,7 @@ public class MessageHandler {
     	this.messageApi = restHandler.buildRetrofit().create(MessageApi.class);
     }
 
-    public MessageResponse getMessages(MessageRequest request) throws NovuNetworkException, IOException {
+    public MessageResponse getMessages(MessageRequest request) throws TeleflowNetworkException, IOException {
         Map<String, Object> params = new HashMap<>();
         if (request.getChannel() != null) params.put("channel", request.getChannel());
         if (request.getSubscriberId() != null) params.put("subscriberId", request.getSubscriberId());
@@ -34,7 +34,7 @@ public class MessageHandler {
         return restHandler.extractResponse(response);
     }
 
-    public DeleteMessageResponse deleteMessage(String messageId) throws IOException, NovuNetworkException {
+    public DeleteMessageResponse deleteMessage(String messageId) throws IOException, TeleflowNetworkException {
     	Response<DeleteMessageResponse> response = messageApi.deleteMessage(messageId).execute();
         return restHandler.extractResponse(response);
     }

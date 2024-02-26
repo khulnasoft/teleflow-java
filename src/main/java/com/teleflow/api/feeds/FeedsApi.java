@@ -1,8 +1,8 @@
-package co.novu.api.feeds;
+package com.teleflow.api.feeds;
 
-import co.novu.api.feeds.request.FeedRequest;
-import co.novu.api.feeds.response.BulkFeedsResponse;
-import co.novu.api.feeds.response.FeedResponse;
+import com.teleflow.api.feeds.request.FeedRequest;
+import com.teleflow.api.feeds.response.BulkFeedsResponse;
+import com.teleflow.api.feeds.response.FeedResponse;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;

@@ -1,12 +1,12 @@
-package co.novu.api.feeds;
+package com.teleflow.api.feeds;
 
-import co.novu.api.feeds.request.FeedRequest;
-import co.novu.api.feeds.response.BulkFeedsResponse;
-import co.novu.api.feeds.response.FeedResponse;
-import co.novu.api.feeds.response.FeedResponseData;
-import co.novu.common.base.NovuConfig;
-import co.novu.common.rest.NovuNetworkException;
-import co.novu.common.rest.RestHandler;
+import com.teleflow.api.feeds.request.FeedRequest;
+import com.teleflow.api.feeds.response.BulkFeedsResponse;
+import com.teleflow.api.feeds.response.FeedResponse;
+import com.teleflow.api.feeds.response.FeedResponseData;
+import com.teleflow.common.base.TeleflowConfig;
+import com.teleflow.common.rest.TeleflowNetworkException;
+import com.teleflow.common.rest.RestHandler;
 import com.google.gson.Gson;
 import junit.framework.TestCase;
 import okhttp3.mockwebserver.MockResponse;
@@ -25,13 +25,13 @@ public class FeedHandlerTest extends TestCase {
     @Override
     protected void setUp() {
     	mockWebServer = new MockWebServer();
-        NovuConfig novuConfig = new NovuConfig("1234");
-        novuConfig.setBaseUrl(mockWebServer.url("").toString());
-        RestHandler restHandler = new RestHandler(novuConfig);
+        TeleflowConfig teleflowConfig = new TeleflowConfig("1234");
+        teleflowConfig.setBaseUrl(mockWebServer.url("").toString());
+        RestHandler restHandler = new RestHandler(teleflowConfig);
         feedsHandler = new FeedsHandler(restHandler);
     }
 
-    public void test_createFeed() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_createFeed() throws IOException, TeleflowNetworkException, InterruptedException {
         FeedRequest feedRequest = new FeedRequest();
         feedRequest.setName("name");
 
@@ -55,7 +55,7 @@ public class FeedHandlerTest extends TestCase {
         assertEquals(gson.toJson(feedResponse), gson.toJson(response));
     }
 
-    public void test_getFeeds() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_getFeeds() throws IOException, TeleflowNetworkException, InterruptedException {
         BulkFeedsResponse feedResponse = new BulkFeedsResponse();
         feedResponse.setData(Collections.singletonList(new FeedResponseData()));
         
@@ -70,7 +70,7 @@ public class FeedHandlerTest extends TestCase {
         assertEquals(gson.toJson(feedResponse), gson.toJson(response));
     }
 
-    public void test_deleteFeed() throws IOException, NovuNetworkException, InterruptedException {
+    public void test_deleteFeed() throws IOException, TeleflowNetworkException, InterruptedException {
         BulkFeedsResponse bulkFeedsResponse = new BulkFeedsResponse();
         bulkFeedsResponse.setData(Collections.singletonList(new FeedResponseData()));
 

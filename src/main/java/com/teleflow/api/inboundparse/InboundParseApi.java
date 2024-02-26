@@ -1,6 +1,6 @@
-package co.novu.api.inboundparse;
+package com.teleflow.api.inboundparse;
 
-import co.novu.api.inboundparse.responses.ValidateMxRecordResponse;
+import com.teleflow.api.inboundparse.responses.ValidateMxRecordResponse;
 import retrofit2.Call;
 import retrofit2.http.GET;
 

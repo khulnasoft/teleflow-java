@@ -1,13 +1,13 @@
-package co.novu.api.workflows;
+package com.teleflow.api.workflows;
 
 import java.util.Map;
 
-import co.novu.api.workflows.requests.UpdateWorkflowRequest;
-import co.novu.api.workflows.requests.UpdateWorkflowStatusRequest;
-import co.novu.api.workflows.requests.WorkflowRequest;
-import co.novu.api.workflows.responses.BulkWorkflowResponse;
-import co.novu.api.workflows.responses.DeleteWorkflowResponse;
-import co.novu.api.workflows.responses.SingleWorkflowResponse;
+import com.teleflow.api.workflows.requests.UpdateWorkflowRequest;
+import com.teleflow.api.workflows.requests.UpdateWorkflowStatusRequest;
+import com.teleflow.api.workflows.requests.WorkflowRequest;
+import com.teleflow.api.workflows.responses.BulkWorkflowResponse;
+import com.teleflow.api.workflows.responses.DeleteWorkflowResponse;
+import com.teleflow.api.workflows.responses.SingleWorkflowResponse;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
