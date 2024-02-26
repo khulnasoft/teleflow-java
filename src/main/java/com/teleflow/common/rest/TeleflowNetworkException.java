@@ -1,4 +1,4 @@
-package co.novu.common.rest;
+package com.teleflow.common.rest;
 
 public class NovuNetworkException extends Exception {
 
