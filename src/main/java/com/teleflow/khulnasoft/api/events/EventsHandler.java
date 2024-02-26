@@ -5,8 +5,8 @@ import com.teleflow.khulnasoft.api.events.requests.TriggerEventRequest;
 import com.teleflow.khulnasoft.api.events.responses.BulkTriggerEventResponse;
 import com.teleflow.khulnasoft.api.events.responses.CancelEventResponse;
 import com.teleflow.khulnasoft.api.events.responses.TriggerEventResponse;
-import com.teleflow.khulnasoft.commmon.rest.TeleflowNetworkException;
-import com.teleflow.khulnasoft.commmon.rest.RestHandler;
+import com.teleflow.khulnasoft.common.rest.TeleflowNetworkException;
+import com.teleflow.khulnasoft.common.rest.RestHandler;
 import lombok.RequiredArgsConstructor;
 import retrofit2.Response;
 

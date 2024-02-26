@@ -2,8 +2,8 @@ package com.teleflow.khulnasoft.api.blueprints;
 
 import com.teleflow.khulnasoft.api.blueprints.pojos.Blueprint;
 import com.teleflow.khulnasoft.api.blueprints.responses.BlueprintsByCategoryResponse;
-import com.teleflow.khulnasoft.commmon.rest.TeleflowNetworkException;
-import com.teleflow.khulnasoft.commmon.rest.RestHandler;
+import com.teleflow.khulnasoft.common.rest.TeleflowNetworkException;
+import com.teleflow.khulnasoft.common.rest.RestHandler;
 import retrofit2.Response;
 
 import java.io.IOException;

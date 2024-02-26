@@ -6,8 +6,8 @@ import com.teleflow.khulnasoft.api.workflowoverrides.request.UpdateWorkflowOverr
 import com.teleflow.khulnasoft.api.workflowoverrides.response.BulkWorkflowOverridesResponse;
 import com.teleflow.khulnasoft.api.workflowoverrides.response.DeleteWorkflowOverrideResponse;
 import com.teleflow.khulnasoft.api.workflowoverrides.response.WorkflowOverrideResponse;
-import com.teleflow.khulnasoft.commmon.rest.TeleflowNetworkException;
-import com.teleflow.khulnasoft.commmon.rest.RestHandler;
+import com.teleflow.khulnasoft.common.rest.TeleflowNetworkException;
+import com.teleflow.khulnasoft.common.rest.RestHandler;
 import retrofit2.Response;
 
 import java.io.IOException;

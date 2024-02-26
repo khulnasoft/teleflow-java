@@ -10,8 +10,8 @@ import com.teleflow.khulnasoft.api.organizations.responses.MemberResponse;
 import com.teleflow.khulnasoft.api.organizations.responses.OrganizationResponse;
 import com.teleflow.khulnasoft.api.organizations.responses.FetchOrganizationResponse;
 import com.teleflow.khulnasoft.api.organizations.responses.UpdateOrganizationNameResponse;
-import com.teleflow.khulnasoft.commmon.rest.TeleflowNetworkException;
-import com.teleflow.khulnasoft.commmon.rest.RestHandler;
+import com.teleflow.khulnasoft.common.rest.TeleflowNetworkException;
+import com.teleflow.khulnasoft.common.rest.RestHandler;
 import lombok.RequiredArgsConstructor;
 import retrofit2.Response;
 

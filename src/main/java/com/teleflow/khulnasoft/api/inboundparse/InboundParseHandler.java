@@ -3,8 +3,8 @@ package com.teleflow.khulnasoft.api.inboundparse;
 import java.io.IOException;
 
 import com.teleflow.khulnasoft.api.inboundparse.responses.ValidateMxRecordResponse;
-import com.teleflow.khulnasoft.commmon.rest.TeleflowNetworkException;
-import com.teleflow.khulnasoft.commmon.rest.RestHandler;
+import com.teleflow.khulnasoft.common.rest.TeleflowNetworkException;
+import com.teleflow.khulnasoft.common.rest.RestHandler;
 import retrofit2.Response;
 
 public class InboundParseHandler {

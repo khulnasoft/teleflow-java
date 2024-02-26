@@ -5,8 +5,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.teleflow.khulnasoft.api.executivedetails.responses.ExecutiveDetailsResponse;
-import com.teleflow.khulnasoft.commmon.rest.TeleflowNetworkException;
-import com.teleflow.khulnasoft.commmon.rest.RestHandler;
+import com.teleflow.khulnasoft.common.rest.TeleflowNetworkException;
+import com.teleflow.khulnasoft.common.rest.RestHandler;
 import retrofit2.Response;
 
 

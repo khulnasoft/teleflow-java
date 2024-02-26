@@ -20,9 +20,9 @@ import com.teleflow.khulnasoft.api.subscribers.responses.SingleSubscriberRespons
 import com.teleflow.khulnasoft.api.subscribers.responses.SubscriberDeleteResponse;
 import com.teleflow.khulnasoft.api.subscribers.responses.SubscriberPreferenceResponse;
 import com.teleflow.khulnasoft.api.subscribers.responses.UnseenNotificationsCountResponse;
-import com.teleflow.khulnasoft.commmon.base.TeleflowConfig;
-import com.teleflow.khulnasoft.commmon.rest.TeleflowNetworkException;
-import com.teleflow.khulnasoft.commmon.rest.RestHandler;
+import com.teleflow.khulnasoft.common.base.TeleflowConfig;
+import com.teleflow.khulnasoft.common.rest.TeleflowNetworkException;
+import com.teleflow.khulnasoft.common.rest.RestHandler;
 import lombok.RequiredArgsConstructor;
 import retrofit2.Response;
 

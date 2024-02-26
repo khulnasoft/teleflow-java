@@ -1,7 +1,7 @@
 package com.teleflow.khulnasoft.api.workflowoverrides.request;
 
 import com.teleflow.khulnasoft.api.common.PreferenceSettings;
-import com.teleflow.khulnasoft.commmon.contracts.IRequest;
+import com.teleflow.khulnasoft.common.contracts.IRequest;
 
 import lombok.Data;
 

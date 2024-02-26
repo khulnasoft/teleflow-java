@@ -5,8 +5,8 @@ import java.io.IOException;
 import com.teleflow.khulnasoft.api.feeds.request.FeedRequest;
 import com.teleflow.khulnasoft.api.feeds.response.BulkFeedsResponse;
 import com.teleflow.khulnasoft.api.feeds.response.FeedResponse;
-import com.teleflow.khulnasoft.commmon.rest.TeleflowNetworkException;
-import com.teleflow.khulnasoft.commmon.rest.RestHandler;
+import com.teleflow.khulnasoft.common.rest.TeleflowNetworkException;
+import com.teleflow.khulnasoft.common.rest.RestHandler;
 import retrofit2.Response;
 
 public class FeedsHandler {

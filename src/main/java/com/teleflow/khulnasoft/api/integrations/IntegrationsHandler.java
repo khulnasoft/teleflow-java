@@ -6,8 +6,8 @@ import com.teleflow.khulnasoft.api.integrations.requests.IntegrationRequest;
 import com.teleflow.khulnasoft.api.integrations.responses.BulkIntegrationResponse;
 import com.teleflow.khulnasoft.api.integrations.responses.ProviderWebhookStatusResponse;
 import com.teleflow.khulnasoft.api.integrations.responses.SingleIntegrationResponse;
-import com.teleflow.khulnasoft.commmon.rest.TeleflowNetworkException;
-import com.teleflow.khulnasoft.commmon.rest.RestHandler;
+import com.teleflow.khulnasoft.common.rest.TeleflowNetworkException;
+import com.teleflow.khulnasoft.common.rest.RestHandler;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor

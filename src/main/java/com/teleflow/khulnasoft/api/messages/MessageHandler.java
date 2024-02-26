@@ -7,8 +7,8 @@ import java.util.Map;
 import com.teleflow.khulnasoft.api.messages.requests.MessageRequest;
 import com.teleflow.khulnasoft.api.messages.responses.DeleteMessageResponse;
 import com.teleflow.khulnasoft.api.messages.responses.MessageResponse;
-import com.teleflow.khulnasoft.commmon.rest.TeleflowNetworkException;
-import com.teleflow.khulnasoft.commmon.rest.RestHandler;
+import com.teleflow.khulnasoft.common.rest.TeleflowNetworkException;
+import com.teleflow.khulnasoft.common.rest.RestHandler;
 import retrofit2.Response;
 
 public class MessageHandler {

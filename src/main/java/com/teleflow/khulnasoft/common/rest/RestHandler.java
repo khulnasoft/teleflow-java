@@ -1,6 +1,6 @@
 package com.teleflow.khulnasoft.common.rest;
 
-import com.teleflow.khulnasoft.commmon.base.TeleflowConfig;
+import com.teleflow.khulnasoft.common.base.TeleflowConfig;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import lombok.RequiredArgsConstructor;

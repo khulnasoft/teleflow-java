@@ -7,8 +7,8 @@ import com.teleflow.khulnasoft.api.layouts.responses.GetLayoutResponse;
 import com.teleflow.khulnasoft.api.layouts.responses.CreateLayoutResponse;
 import com.teleflow.khulnasoft.api.layouts.responses.FilterLayoutResponse;
 import com.teleflow.khulnasoft.api.layouts.responses.SetDefaultLayoutResponse;
-import com.teleflow.khulnasoft.commmon.rest.TeleflowNetworkException;
-import com.teleflow.khulnasoft.commmon.rest.RestHandler;
+import com.teleflow.khulnasoft.common.rest.TeleflowNetworkException;
+import com.teleflow.khulnasoft.common.rest.RestHandler;
 import retrofit2.Response;
 
 import java.io.IOException;

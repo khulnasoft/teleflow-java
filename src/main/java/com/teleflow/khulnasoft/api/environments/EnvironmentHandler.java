@@ -7,8 +7,8 @@ import com.teleflow.khulnasoft.api.environments.requests.UpdateEnvironmentReques
 import com.teleflow.khulnasoft.api.environments.responses.ApiKeyResponse;
 import com.teleflow.khulnasoft.api.environments.responses.BulkEnvironmentResponse;
 import com.teleflow.khulnasoft.api.environments.responses.SingleEnvironmentResponse;
-import com.teleflow.khulnasoft.commmon.rest.TeleflowNetworkException;
-import com.teleflow.khulnasoft.commmon.rest.RestHandler;
+import com.teleflow.khulnasoft.common.rest.TeleflowNetworkException;
+import com.teleflow.khulnasoft.common.rest.RestHandler;
 import retrofit2.Response;
 
 public class EnvironmentHandler {

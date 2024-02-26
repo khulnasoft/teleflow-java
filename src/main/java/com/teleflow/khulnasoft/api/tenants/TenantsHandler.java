@@ -9,8 +9,8 @@ import com.teleflow.khulnasoft.api.tenants.requests.TenantRequest;
 import com.teleflow.khulnasoft.api.tenants.responses.BulkTenantResponse;
 import com.teleflow.khulnasoft.api.tenants.responses.DeleteTenantResponse;
 import com.teleflow.khulnasoft.api.tenants.responses.TenantResponse;
-import com.teleflow.khulnasoft.commmon.rest.TeleflowNetworkException;
-import com.teleflow.khulnasoft.commmon.rest.RestHandler;
+import com.teleflow.khulnasoft.common.rest.TeleflowNetworkException;
+import com.teleflow.khulnasoft.common.rest.RestHandler;
 import retrofit2.Response;
 
 public class TenantsHandler {

@@ -5,8 +5,8 @@ import com.teleflow.khulnasoft.api.changes.request.GetChangesRequest;
 import com.teleflow.khulnasoft.api.changes.responses.ApplyChangesResponse;
 import com.teleflow.khulnasoft.api.changes.responses.ChangeCountResponse;
 import com.teleflow.khulnasoft.api.changes.responses.GetChangesResponse;
-import com.teleflow.khulnasoft.commmon.rest.TeleflowNetworkException;
-import com.teleflow.khulnasoft.commmon.rest.RestHandler;
+import com.teleflow.khulnasoft.common.rest.TeleflowNetworkException;
+import com.teleflow.khulnasoft.common.rest.RestHandler;
 import lombok.RequiredArgsConstructor;
 import retrofit2.Response;
 

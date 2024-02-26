@@ -2,7 +2,7 @@ package com.teleflow.khulnasoft.api.workflows.requests;
 
 import com.teleflow.khulnasoft.api.common.Step;
 import com.teleflow.khulnasoft.api.common.PreferenceSettings;
-import com.teleflow.khulnasoft.commmon.contracts.IRequest;
+import com.teleflow.khulnasoft.common.contracts.IRequest;
 import lombok.Data;
 
 import java.util.List;

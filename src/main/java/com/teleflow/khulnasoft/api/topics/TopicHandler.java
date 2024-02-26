@@ -10,8 +10,8 @@ import com.teleflow.khulnasoft.api.topics.responses.FilterTopicsResponse;
 import com.teleflow.khulnasoft.api.topics.responses.SubscriberAdditionResponse;
 import com.teleflow.khulnasoft.api.topics.responses.SubscriberRemovalResponse;
 import com.teleflow.khulnasoft.api.topics.responses.TopicResponse;
-import com.teleflow.khulnasoft.commmon.rest.TeleflowNetworkException;
-import com.teleflow.khulnasoft.commmon.rest.RestHandler;
+import com.teleflow.khulnasoft.common.rest.TeleflowNetworkException;
+import com.teleflow.khulnasoft.common.rest.RestHandler;
 
 import java.io.IOException;
 import java.util.HashMap;
